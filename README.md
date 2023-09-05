@@ -1,1 +1,4 @@
 # BitGarden
+
+# NUNCA DE COMMIT NA MAIN
+
