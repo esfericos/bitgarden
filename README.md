@@ -1,9 +1,9 @@
 # Bitgarden
 
-A tower defense in which _you_ program your defenses using the [Lua] programming
+A tower defense in which _you_ program your defenses using the [JavaScript] programming
 language.
 
-[Lua]: https://www.lua.org/
+[JavaScript]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
 ## License
 
