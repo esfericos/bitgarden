@@ -5,22 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class MapPainter : MonoBehaviour
 {
-    public Vector3Int position;
     public Tilemap tilemap;
-
-    public enum Tiles
-    {
-        Grass,
-        Gbt,
-        Gbb,
-        Gbl,
-        Gblb,
-        Gblt,
-        Gbr,
-        Gbrb,
-        Gbrt
-    }
-    public Tiles TileToPaint;
 
     public Tile grass;
     public Tile gbt;
@@ -32,35 +17,42 @@ public class MapPainter : MonoBehaviour
     public Tile gbrb;
     public Tile gbrt;
 
-    [ContextMenu("Paint")]
-    void Paint()
+
+    public void Paint(string type, int x, int y)
     {
+        Vector3Int position = new Vector3Int(x, y);
         Tile selected = grass;
-        switch (TileToPaint)
+
+        if (type == "none") return;
+
+        switch (type)
         {
-            case Tiles.Gbt:
-                selected = gbt; 
+            case "gbt":
+                selected = gbt;
                 break;
-            case Tiles.Gbb:
-                 selected = gbb;
+            case "gbb":
+                selected = gbb;
                 break;
-             case Tiles.Gbl:    
+            case "gbl":
                 selected = gbl;
                 break;
-             case Tiles.Gblb:
+            case "gbrb":
                 selected = gbrb;
                 break;
-            case Tiles.Gblt:
-                selected = gblb;
+            case "gblt":
+                selected = gblt;
                 break;
-            case Tiles.Gbr:
+            case "gbr":
                 selected = gbr;
                 break;
-            case Tiles.Gbrb:
-                selected = gbrb;
+            case "gblb":
+                selected = gblb;
                 break;
-            case Tiles.Gbrt:
-                selected = gbrb;
+            case "gbrt":
+                selected = gbrt;
+                break;
+            case "grass":
+                selected = grass;
                 break;
             default:
                 selected = grass;
