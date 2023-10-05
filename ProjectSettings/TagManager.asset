@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - MapPainterHandler
+  - GraphHandle
   layers:
   - Default
   - TransparentFX
