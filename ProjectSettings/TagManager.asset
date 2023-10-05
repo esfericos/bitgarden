@@ -46,3 +46,6 @@ TagManager:
   - name: Turret
     uniqueID: 1546584073
     locked: 0
+  - name: NPC
+    uniqueID: 3464729967
+    locked: 0
