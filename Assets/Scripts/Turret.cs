@@ -9,6 +9,8 @@ public class Turret : MonoBehaviour
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
 
+    [SerializeField] private Transform turretRotationPoint;
+
     [Header("Attribute")]
     [SerializeField] private float range = 2f;
 
@@ -44,7 +46,7 @@ public class Turret : MonoBehaviour
     {
         float angle = Mathf.Atan2(_target.position.y - transform.position.y, _target.position.x - transform.position.x) * Mathf.Rad2Deg - 90f;
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        transform.rotation = targetRotation;
+        turretRotationPoint.rotation = targetRotation;
     }
 
     private bool CheckTargetInRange()
