@@ -11,8 +11,21 @@ public class Arrow : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private float arrowSpeed = 5f;
     [SerializeField] private int arrowDamage = 1;
+    [SerializeField] private float lifeTime = 3;
 
     private Transform _target;
+
+    private void Update()
+    {
+        StartCoroutine(Die());
+    }
+
+    IEnumerator Die()
+    {
+        //play your sound
+        yield return new WaitForSeconds(lifeTime); //waits 3 seconds
+        Destroy(gameObject); //this will work after 3 seconds.
+    }
 
     public void SetTarget(Transform _tg)
     {

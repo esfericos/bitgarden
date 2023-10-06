@@ -1696,7 +1696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1324030665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2791,8 +2791,20 @@ PrefabInstance:
       value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 5844379049276944830, guid: b27a7e3c51990fa4a9a8065dbdc262f5, type: 3}
+      propertyPath: bps
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844379049276944830, guid: b27a7e3c51990fa4a9a8065dbdc262f5, type: 3}
       propertyPath: range
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844379049276944830, guid: b27a7e3c51990fa4a9a8065dbdc262f5, type: 3}
+      propertyPath: arrowPrefab
+      value: 
+      objectReference: {fileID: 4532369435521623333, guid: fbe0f9cdb94500b48b8d2e9a9ba905a8, type: 3}
+    - target: {fileID: 5844379049276944830, guid: b27a7e3c51990fa4a9a8065dbdc262f5, type: 3}
+      propertyPath: rotationSpeed
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5844379049276944830, guid: b27a7e3c51990fa4a9a8065dbdc262f5, type: 3}
       propertyPath: enemyMask.m_Bits
@@ -3310,6 +3322,10 @@ PrefabInstance:
     - target: {fileID: 8878845969960019099, guid: e747e1380f24c5b4b9245520eeb716d6, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8878845969960019099, guid: e747e1380f24c5b4b9245520eeb716d6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
