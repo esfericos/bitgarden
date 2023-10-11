@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.Search;
 using UnityEngine.UIElements;
 
 public class Turret : MonoBehaviour
@@ -10,13 +11,15 @@ public class Turret : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
 
     [SerializeField] private Transform turretRotationPoint;
+    [SerializeField] private GameObject arrowPrefab;
 
     [Header("Attribute")]
-    [SerializeField] private float range = 2f;
-
-    [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float range = 3f;
+    [SerializeField] private float rotationSpeed = 200f;
+    [SerializeField] private float bps = 1f;
 
     private Transform _target;
+    private float _timeUntilFire;
 
     private void Update()
     {
@@ -30,6 +33,22 @@ public class Turret : MonoBehaviour
         {
             _target = null;
         }
+        else
+        {
+            _timeUntilFire += Time.deltaTime;
+            if (_timeUntilFire >= 1f / bps)
+            {
+                Shoot();
+                _timeUntilFire = 0f;
+            }
+        }
+    }
+
+    private void Shoot()
+    {
+        GameObject arrowObj = Instantiate(arrowPrefab, turretRotationPoint.position, Quaternion.identity);
+        Arrow arrowScript = arrowObj.GetComponent<Arrow>();
+        arrowScript.SetTarget(_target);
     }
 
     private void FindTarget()
