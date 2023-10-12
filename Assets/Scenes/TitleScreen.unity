@@ -155,10 +155,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1537935497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1270, y: 714}
+  m_SizeDelta: {x: 2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53734760
 MonoBehaviour:
@@ -397,8 +397,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 135, y: -96}
-  m_SizeDelta: {x: 187.5, y: 87.5}
+  m_AnchoredPosition: {x: 200, y: -100}
+  m_SizeDelta: {x: 293.75, y: 93.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &354773642
 MonoBehaviour:
@@ -412,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14513707c62a4c04ea4c654f59af75d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
 --- !u!114 &354773643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,7 +443,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: -436881827, guid: 23d02d43502b344408d8aafc596f45dd, type: 3}
+    m_PressedSprite: {fileID: 1416174047, guid: 057e0f554623db540b89c3065665fadd, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -488,8 +489,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 455746892, guid: 23d02d43502b344408d8aafc596f45dd, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: -1500766103, guid: 057e0f554623db540b89c3065665fadd, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1081,8 +1082,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -135, y: -96}
-  m_SizeDelta: {x: 187.5, y: 87.5}
+  m_AnchoredPosition: {x: -200, y: -100}
+  m_SizeDelta: {x: 293.75, y: 93.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2029993743
 MonoBehaviour:
@@ -1114,7 +1115,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: -436881827, guid: 23d02d43502b344408d8aafc596f45dd, type: 3}
+    m_PressedSprite: {fileID: 1416174047, guid: 057e0f554623db540b89c3065665fadd, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -1137,7 +1138,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: lvl1
+          m_StringArgument: uiTestScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2029993744
@@ -1160,8 +1161,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 455746892, guid: 23d02d43502b344408d8aafc596f45dd, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: -1500766103, guid: 057e0f554623db540b89c3065665fadd, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1190,6 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14513707c62a4c04ea4c654f59af75d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
