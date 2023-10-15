@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
@@ -20,16 +18,16 @@ public class Arrow : MonoBehaviour
         StartCoroutine(Die());
     }
 
-    IEnumerator Die()
+    private IEnumerator Die()
     {
         //play your sound
         yield return new WaitForSeconds(lifeTime); //waits 3 seconds
         Destroy(gameObject); //this will work after 3 seconds.
     }
 
-    public void SetTarget(Transform _tg)
+    public void SetTarget(Transform tg)
     {
-        _target = _tg;
+        _target = tg;
     }
 
     private void FixedUpdate()

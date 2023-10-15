@@ -1,38 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class InputTowerCreator : MonoBehaviour
+namespace TMP
 {
-
-    public TMP_InputField xCord;
-    public TMP_InputField yCord;
-    public Button submitButton;
-
-
-    void Start()
+    public class InputTowerCreator : MonoBehaviour
     {
-        submitButton.onClick.AddListener(OnButtonClick);
-    }
 
-    void OnButtonClick()
-    {
-        // Converte os valores dos campos de entrada para números inteiros
-        int value1;
-        int value2;
+        public TMP_InputField xCord;
+        public TMP_InputField yCord;
+        public Button submitButton;
 
-        if (int.TryParse(xCord.text, out value1) && int.TryParse(yCord.text, out value2))
+
+        private void Start()
         {
-            // Imprime os valores no console
-            Debug.Log("x cord: " + value1);
-            Debug.Log("y cord: " + value2);
+            submitButton.onClick.AddListener(OnButtonClick);
         }
-        else
+
+        private void OnButtonClick()
         {
-            // Caso a conversão falhe
-            Debug.Log("Insira números válidos nos campos de entrada.");
+            // Converte os valores dos campos de entrada para nÃºmeros inteiros
+            if (int.TryParse(xCord.text, out var value1) && int.TryParse(yCord.text, out var value2))
+            {
+                // Imprime os valores no console
+                Debug.Log("x cord: " + value1);
+                Debug.Log("y cord: " + value2);
+            }
+            else
+            {
+                // Caso a conversÃ£o falhe
+                Debug.Log("Insira nÃºmeros vÃ¡lidos no campo de entrada.");
+            }
         }
     }
 }
