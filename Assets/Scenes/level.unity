@@ -1966,6 +1966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fb8f2d7a1a8e349831423a77d026c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entity: {fileID: 3421758336216858795, guid: fca82d03caeee8c4f8aef01fcde79e0e, type: 3}
   jsonFile: {fileID: 4900000, guid: d9438b891ed3e2a4c9c855593ab79f95, type: 3}
 --- !u!4 &1557151289
 Transform:
@@ -2789,6 +2790,10 @@ PrefabInstance:
     - target: {fileID: 3863648348886933859, guid: b27a7e3c51990fa4a9a8065dbdc262f5, type: 3}
       propertyPath: m_Name
       value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863648348886933859, guid: b27a7e3c51990fa4a9a8065dbdc262f5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5844379049276944830, guid: b27a7e3c51990fa4a9a8065dbdc262f5, type: 3}
       propertyPath: bps
