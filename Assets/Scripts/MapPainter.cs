@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -41,5 +39,14 @@ public class MapPainter : MonoBehaviour
             _ => throw new DataException("Unhandled BgTileKind in MapPainter")
         };
         tilemap.SetTile(position, selected);
+    }
+
+    /// <summary>
+    /// Renders Entity in the map.
+    /// </summary>
+    public void PaintEntity(Entity entity, Position pos)
+    {
+        Vector3 posVec = new Vector3(pos.X + 1, pos.Y + 1);
+        entity.Render(posVec);
     }
 }

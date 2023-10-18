@@ -9,18 +9,18 @@ using UnityEngine;
 public class Graph : MonoBehaviour
 {
     private bool _initialized = false;
-    
+
     private readonly Dictionary<Position, Directions> _topology = new();
     private readonly Dictionary<Position, BgTile> _meta = new();
-    
-    public Graph() {}
+
+    public Graph() { }
 
     public void Initialize(Dictionary<string, string> rawTopology, Dictionary<string, GraphManager.RawMetadataEntry> rawMeta)
     {
         if (_initialized)
             throw new Exception("Already initialized graph");
         _initialized = true;
-        
+
         foreach (var rawEntry in rawTopology)
         {
             var pos = Position.FromString(rawEntry.Key);
@@ -35,7 +35,15 @@ public class Graph : MonoBehaviour
             _meta.Add(pos, new BgTile(kind, pos));
         }
     }
-    
+
+    /// <summary>
+    /// Adds Entity information to meta.
+    /// </summary>
+    public void AddEntity(Entity entity, Position pos)
+    {
+        _meta[pos].Entity = entity;
+    }
+
     /// <summary>
     /// Returns an enumerable over the walkable neighbors of the given position.
     /// </summary>
@@ -57,13 +65,24 @@ public class Graph : MonoBehaviour
     }
 
     /// <summary>
+    /// Checks if a node is in a valid position and if it doesn't already have an entity.
+    /// </summary>
+    public bool IsAvailableToBuild(Position pos)
+    {
+        var tileKind = _meta[pos].Kind;
+        return (tileKind == BgTileKind.Grass
+            || tileKind == BgTileKind.Gbt)
+            && _meta[pos].Entity == null;
+    }
+
+    /// <summary>
     /// Returns the tile at the given position.
     /// </summary>
     public BgTile GetMeta(Position p)
     {
         return _meta[p];
     }
-    
+
     /// <summary>
     /// Returns an enumerable over all metadata entries, i.e., <code>BgTile</code>s.
     /// </summary>
@@ -71,6 +90,7 @@ public class Graph : MonoBehaviour
     {
         return _meta.Values;
     }
+
 }
 
 public struct Directions
@@ -102,7 +122,7 @@ public struct Directions
         var flag = b ? 1 : 0;
         return (byte)(flag << shift);
     }
-    
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private bool Is(byte shift)
     {
@@ -162,7 +182,7 @@ public readonly struct Position
         X = x;
         Y = y;
     }
-    
+
     public Position WithX(short deltaX)
     {
         return new Position((ushort)(X + deltaX), Y);
@@ -199,7 +219,7 @@ public readonly struct Position
 
     public override string ToString()
     {
-        return $"Position(x={Y}, y={X})";
+        return $"Position(x={X}, y={Y})";
     }
 }
 
@@ -239,7 +259,7 @@ static class BgTileKindUtils
             _ => throw new DataException("Invalid string to BgTileKind conversion"),
         };
     }
-    
+
     public static string ToString(BgTileKind kind)
     {
         return kind switch
@@ -262,16 +282,19 @@ static class BgTileKindUtils
 public class BgTile
 {
     public BgTileKind Kind { get; set; }
-    
+
     // This is not serialized in the JSON representation.
     public Position Position { get; set; }
+
+    public Entity Entity { get; set; }
 
     public BgTile(BgTileKind kind, Position position)
     {
         Kind = kind;
         Position = position;
+        Entity = null;
     }
-    
+
     public override string ToString()
     {
         return $"Tile(kind={Kind}, position={Position})";
