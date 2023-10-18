@@ -39,9 +39,15 @@ public class Arrow : MonoBehaviour
         rb.velocity = direction * arrowSpeed;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        other.gameObject.GetComponent<Health>().TakeDamage(arrowDamage);
+        var enemy = collision.collider.GetComponent<EnemyBehaviour>();
+
+        if (enemy)
+        {
+            enemy.TakeHit(arrowDamage);
+        }
+        
         Destroy(gameObject);
     }
 }

@@ -9,9 +9,10 @@ public class Turret : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
-
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private AudioSource shootingSound;
+
 
     [Header("Attribute")]
     [SerializeField] private float range = 3f;
@@ -46,6 +47,7 @@ public class Turret : MonoBehaviour
 
     private void Shoot()
     {
+        shootingSound.Play();
         GameObject arrowObj = Instantiate(arrowPrefab, turretRotationPoint.position, Quaternion.identity);
         Arrow arrowScript = arrowObj.GetComponent<Arrow>();
         arrowScript.SetTarget(_target);
