@@ -9,7 +9,8 @@ public class GraphManager : MonoBehaviour
     private MapPainter tilemap;
     private Graph graph;
 
-    public Entity entity;
+    public Entity turret;
+    public EnemyCastle enemyCastle;
 
     public TextAsset jsonFile;
     // Start is called before the first frame update
@@ -25,7 +26,9 @@ public class GraphManager : MonoBehaviour
 
         foreach (var tile in graph.AllMeta()) tilemap.Paint(tile);
 
-        AddEntity(entity, new Position(x: 8, y: 7));
+        AddEntity(turret, new Position(x: 8, y: 7));
+        AddEntity(enemyCastle, new Position(x: 2, y: 11));
+        enemyCastle.SpawnEnemies(new Position(x: 2, y: 11));
     }
 
     /// <summary>

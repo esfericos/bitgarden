@@ -70,10 +70,8 @@ public class Graph : MonoBehaviour
     public bool IsAvailableToBuild(Position pos)
     {
         var tileKind = _meta[pos].Kind;
-        return tileKind != BgTileKind.None
-            && tileKind != BgTileKind.Gbrt
-            && tileKind != BgTileKind.Gbr
-            && tileKind != BgTileKind.Gbb
+        return (tileKind == BgTileKind.Grass
+            || tileKind == BgTileKind.Gbt)
             && _meta[pos].Entity == null;
     }
 

@@ -2,5 +2,8 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
-    public abstract void Render(Vector3 pos);
+    public virtual void Render(Vector3 pos)
+    {
+        Instantiate(this, pos, Quaternion.identity);
+    }
 }

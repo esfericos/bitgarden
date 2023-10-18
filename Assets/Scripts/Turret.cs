@@ -75,8 +75,4 @@ public class Turret : Entity
         Handles.DrawWireDisc(transform.position, Vector3.forward, range);
     }
 
-    public override void Render(Vector3 pos)
-    {
-        Instantiate(this, pos, Quaternion.identity);
-    }
 }
