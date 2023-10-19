@@ -243,9 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e90da55ac1d884bb51856f5cfb8084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPoint: {fileID: 0}
   path:
-  - {fileID: 0}
+  - {x: 2.5001315e+26, y: 7.2e-43, z: 0.0000000033088103}
 --- !u!50 &6156691744905995788
 Rigidbody2D:
   serializedVersion: 4
@@ -332,6 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6156691744905995788}
   moveSpeed: 2
+  distance: 0.01
 --- !u!114 &4940453155764369359
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -42,4 +42,13 @@ public class MapPainter : MonoBehaviour
         };
         tilemap.SetTile(position, selected);
     }
+
+    /// <summary>
+    /// Renders Entity in the map.
+    /// </summary>
+    public void PaintEntity(Entity entity, Position pos)
+    {
+        Vector3 posVec = new Vector3(pos.X + 1, pos.Y + 1);
+        entity.Render(posVec);
+    }
 }

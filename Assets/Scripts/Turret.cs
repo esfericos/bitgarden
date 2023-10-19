@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.Search;
 using UnityEngine.UIElements;
 
-public class Turret : MonoBehaviour
+public class Turret : Entity
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
