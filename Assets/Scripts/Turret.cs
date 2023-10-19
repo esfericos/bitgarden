@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Search;
-using UnityEngine.UIElements;
 
-public class Turret : MonoBehaviour
+public class Turret : Entity
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
@@ -78,4 +74,5 @@ public class Turret : MonoBehaviour
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, Vector3.forward, range);
     }
+
 }
