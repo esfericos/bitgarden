@@ -4,7 +4,7 @@ using Interpreter;
 using Interpreter.Parser;
 using NUnit.Framework;
 
-namespace Tests.EditMode.Parser
+namespace Tests.EditMode.Interpreter
 {
     public class LexerTest
     {
