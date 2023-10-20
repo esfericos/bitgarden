@@ -8,6 +8,7 @@ public class Turret : Entity
 
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private AudioSource shootingSound;
 
     [Header("Attribute")]
     [SerializeField] private float range = 3f;
@@ -42,6 +43,7 @@ public class Turret : Entity
 
     private void Shoot()
     {
+        shootingSound.Play();
         GameObject arrowObj = Instantiate(arrowPrefab, turretRotationPoint.position, Quaternion.identity);
         Arrow arrowScript = arrowObj.GetComponent<Arrow>();
         arrowScript.SetTarget(_target);
