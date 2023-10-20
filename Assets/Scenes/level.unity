@@ -2997,6 +2997,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5797515681641221868, guid: e747e1380f24c5b4b9245520eeb716d6, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797515681641221868, guid: e747e1380f24c5b4b9245520eeb716d6, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8878845969960019099, guid: e747e1380f24c5b4b9245520eeb716d6, type: 3}
       propertyPath: m_Name
       value: Enemy
