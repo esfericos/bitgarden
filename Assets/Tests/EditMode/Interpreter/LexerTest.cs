@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Interpreter;
+using Interpreter.Eval;
 using Interpreter.Parser;
 using NUnit.Framework;
 

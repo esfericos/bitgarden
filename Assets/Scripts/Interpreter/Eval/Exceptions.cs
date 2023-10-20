@@ -1,12 +1,7 @@
 using System;
 
-namespace Interpreter
+namespace Interpreter.Eval
 {
-    public class Eval
-    {
-        
-    }
-
     public class EvalException : Exception
     {
         public EvalException(string message) : base(message) {}
