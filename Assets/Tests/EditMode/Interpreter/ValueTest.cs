@@ -1,5 +1,4 @@
-using System;
-using Interpreter;
+using Interpreter.Eval;
 using NUnit.Framework;
 
 namespace Tests.EditMode.Interpreter

@@ -1,6 +1,6 @@
 using System;
 
-namespace Interpreter
+namespace Interpreter.Eval
 {
     // Yes, this is terribly inefficient, but who cares, anyway?
     
