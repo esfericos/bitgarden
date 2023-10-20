@@ -7,8 +7,8 @@ namespace Interpreter.Parser.Ast
     
     public interface IExprVisitor<out T>
     {
-        T VisitProgram(Ast.Program node);
-        T VisitCall(Ast.Call node);
-        T VisitLiteral(Ast.Literal node);
+        public T VisitProgram(Ast.Program node);
+        public T VisitCall(Ast.Call node);
+        public T VisitLiteral(Ast.Literal node);
     }
 }
