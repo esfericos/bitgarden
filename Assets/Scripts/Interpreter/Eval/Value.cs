@@ -15,6 +15,8 @@ namespace Interpreter.Eval
         public static Value WrapNumber(double value) => new Number(value);
         public static Value WrapString(string value) => new String(value);
 
+        public abstract override string ToString();
+
         private T ThisAs<T>() where T : Value
         {
             try
@@ -36,6 +38,11 @@ namespace Interpreter.Eval
         {
             Value = value;
         }
+
+        public override string ToString()
+        {
+            return $"Number({Value})";
+        }
     }
 
     public class String : Value
@@ -45,6 +52,11 @@ namespace Interpreter.Eval
         public String(string value)
         {
             Value = value;
+        }
+
+        public override string ToString()
+        {
+            return $"String(\"{Value}\")";
         }
     }
 }
