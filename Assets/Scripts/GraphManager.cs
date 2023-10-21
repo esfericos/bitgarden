@@ -26,10 +26,10 @@ public class GraphManager : MonoBehaviour
 
         foreach (var tile in graph.AllMeta()) tilemap.Paint(tile);
 
-        AddEntity(turret, new Position(x: 8, y: 7));
-        AddEntity(turret, new Position(x: 8, y: 5));
-        AddEntity(enemyCastle, new Position(x: 2, y: 11));
-        enemyCastle.SpawnEnemies(new Position(x: 2, y: 11));
+        AddEntity(turret, new Position(x: 7, y: 15));
+        AddEntity(turret, new Position(x: 7, y: 12));
+        AddEntity(enemyCastle, new Position(x: 12, y: 14));
+        enemyCastle.SpawnEnemies(new Position(x: 12, y: 14));
     }
 
     /// <summary>
