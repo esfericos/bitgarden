@@ -51,7 +51,7 @@ namespace Tests.EditMode.Interpreter
                 new TestCmd.CmdWithoutArguments(),
                 "cmdWithoutArguments",
                 new Dictionary<string, Value>(),
-                Value.WrapNumber(3.14));
+                new Nil());
         }
 
         public static IEnumerable<(object, Dictionary<string, Value>, string)> ConstructorErrorCasesData()
@@ -117,9 +117,9 @@ namespace Tests.EditMode.Interpreter
 
         internal class CmdWithoutArguments
         {
-            public Number Exec()
+            public Nil Exec()
             {
-                return new Number(3.14);
+                return new Nil();
             }
         }
 
