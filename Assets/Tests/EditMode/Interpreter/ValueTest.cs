@@ -1,4 +1,5 @@
 using Interpreter.Eval;
+using Interpreter.Eval.Type;
 using NUnit.Framework;
 
 namespace Tests.EditMode.Interpreter

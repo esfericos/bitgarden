@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Interpreter.Eval;
+using Interpreter.Eval.Type;
 using NUnit.Framework;
-using String = Interpreter.Eval.String;
+using String = Interpreter.Eval.Type.String;
 
 namespace Tests.EditMode.Interpreter
 {
