@@ -1,7 +1,7 @@
 using Interpreter.Eval.Type;
 using UnityEngine;
 
-namespace Interpreter.Cmd
+namespace Interpreter.Lib
 {
     // [UserFunction("console_log")]
     public class Log
