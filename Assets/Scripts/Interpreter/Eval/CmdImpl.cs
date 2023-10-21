@@ -6,15 +6,7 @@ using Interpreter.Eval.Type;
 
 namespace Interpreter.Eval
 {
-    public class CmdManager
-    {
-        /// <summary>
-        /// Map from function names to an action that executes it.
-        /// </summary>
-        private IDictionary<string, RegisteredCmd> RegisteredCmds;
-    }
-
-    public class RegisteredCmd
+    public class CmdImpl
     {
         public readonly string Name;
         public readonly IReadOnlyDictionary<string, System.Type> ArgTypes;
@@ -27,7 +19,7 @@ namespace Interpreter.Eval
 
         private const string MustBeValue = "must derive from 'Value' (i.e., be a 'String', 'Number' or 'Nil')";
 
-        public RegisteredCmd(object cmdInstance)
+        public CmdImpl(object cmdInstance)
         {
             _cmdInstance = cmdInstance;
             var cmd = cmdInstance.GetType();
