@@ -13,7 +13,7 @@ namespace Tests.EditMode.Interpreter
         public void SuccessCases((object, string, Dictionary<string, Value>, Value) tup)
         {
             var (cmd, expectedCmdName, userArgs, expectedReturnValue) = tup;
-            var c = new RegisteredCmd(cmd);
+            var c = new CmdImpl(cmd);
             Assert.AreEqual(expectedCmdName, c.Name);
             var returnValue = c.Exec(userArgs);
             Assert.AreEqual(expectedReturnValue, returnValue);
@@ -23,7 +23,7 @@ namespace Tests.EditMode.Interpreter
         public void ConstructorErrorCases((object, Dictionary<string, Value>, string) tup)
         {
             var (cmd, _, expectedErrorMessage) = tup;
-            var ex = Assert.Throws<Exception>(() => _ = new RegisteredCmd(cmd));
+            var ex = Assert.Throws<Exception>(() => _ = new CmdImpl(cmd));
             Assert.That(ex.Message, Does.StartWith(expectedErrorMessage));
         }
         
@@ -31,7 +31,7 @@ namespace Tests.EditMode.Interpreter
         public void ExecErrorCases((object, Dictionary<string, Value>, string) tup)
         {
             var (cmd, userArgs, expectedErrorMessage) = tup;
-            var c = new RegisteredCmd(cmd);
+            var c = new CmdImpl(cmd);
             var ex = Assert.Throws<EvalException>(() => _ = c.Exec(userArgs));
             Assert.That(ex.Message, Does.StartWith(expectedErrorMessage));
         }
