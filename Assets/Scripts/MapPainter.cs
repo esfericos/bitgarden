@@ -16,7 +16,10 @@ public class MapPainter : MonoBehaviour
     public Tile gbr;
     public Tile gbrb;
     public Tile gbrt;
-
+    public Tile gbilt;
+    public Tile gbirt;
+    public Tile gbilb;
+    public Tile gbirb;
 
     public void Paint(BgTile tile)
     {
@@ -34,6 +37,10 @@ public class MapPainter : MonoBehaviour
             BgTileKind.Gblb => gblb,
             BgTileKind.Gbrt => gbrt,
             BgTileKind.Grass => grass,
+            BgTileKind.Gbilt => gbilt,
+            BgTileKind.Gbirt => gbirt,
+            BgTileKind.Gbilb => gbilb,
+            BgTileKind.Gbirb => gbirb,
             // Unreachable since the `None` case was already early handled above.
             BgTileKind.None => throw new Exception("Unreachable"),
             _ => throw new DataException("Unhandled BgTileKind in MapPainter")

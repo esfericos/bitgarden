@@ -237,6 +237,10 @@ public enum BgTileKind
     Gbr,
     Gbrb,
     Gbrt,
+    Gbilt,
+    Gbirt,
+    Gbilb,
+    Gbirb
 }
 
 // Sorry.
@@ -256,6 +260,10 @@ static class BgTileKindUtils
             "gbr" => BgTileKind.Gbr,
             "gbrb" => BgTileKind.Gbrb,
             "gbrt" => BgTileKind.Gbrt,
+            "gbilt" => BgTileKind.Gbilt,
+            "gbirt" => BgTileKind.Gbirt,
+            "gbilb" => BgTileKind.Gbilb,
+            "gbirb" => BgTileKind.Gbirb,
             _ => throw new DataException("Invalid string to BgTileKind conversion"),
         };
     }
@@ -274,6 +282,10 @@ static class BgTileKindUtils
             BgTileKind.Gbr => "gbr",
             BgTileKind.Gbrb => "gbrb",
             BgTileKind.Gbrt => "gbrt",
+            BgTileKind.Gbilt => "gbilt",
+            BgTileKind.Gbirt => "gbirt",
+            BgTileKind.Gbilb => "gbilb",
+            BgTileKind.Gbirb => "gbirb",
             _ => throw new DataException("unknown BgTileKind"),
         };
     }
