@@ -1,10 +1,13 @@
+using UnityEngine;
+
 namespace Interpreter.Cmd
 {
-    public class Log : ICmd
+    // [UserFunction("console_log")]
+    public class Log
     {
-        public void Exec()
+        public void Exec(Eval.String msg)
         {
-            throw new System.NotImplementedException();
+            Debug.Log($"user msg: {msg}");
         }
     }
 }
