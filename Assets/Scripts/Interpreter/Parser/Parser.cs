@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Interpreter.Eval;
+using Interpreter.Eval.Type;
 
 namespace Interpreter.Parser
 {

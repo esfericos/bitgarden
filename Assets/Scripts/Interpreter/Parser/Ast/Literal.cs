@@ -1,4 +1,4 @@
-using Interpreter.Eval;
+using Interpreter.Eval.Type;
 
 namespace Interpreter.Parser.Ast
 {

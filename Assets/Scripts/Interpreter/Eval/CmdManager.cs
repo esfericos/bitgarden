@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Interpreter.Eval.Type;
 
 namespace Interpreter.Eval
 {
@@ -16,8 +17,8 @@ namespace Interpreter.Eval
     public class RegisteredCmd
     {
         public readonly string Name;
-        public readonly IReadOnlyDictionary<string, Type> ArgTypes;
-        public readonly Type ReturnType;
+        public readonly IReadOnlyDictionary<string, System.Type> ArgTypes;
+        public readonly System.Type ReturnType;
 
         private readonly object _cmdInstance;
         private readonly MethodInfo _cmdExec;
@@ -33,15 +34,15 @@ namespace Interpreter.Eval
 
             // Function name is the same as the class, but the first character is lowercased (camelCase).
             Name = char.ToLower(cmd.Name[0]) + cmd.Name[1..];
-            
+
             // Tries to get the `Exec` method
             _cmdExec = cmd.GetMethod("Exec", BindingFlags.Public | BindingFlags.Instance);
             if (_cmdExec == null)
                 throw new Exception($"Missing 'Exec' method in command class '{cmd.Name}'");
-            
+
             // Initialize ArgTypes
             var execParams = _cmdExec.GetParameters();
-            var argTypes = new Dictionary<string, Type>();
+            var argTypes = new Dictionary<string, System.Type>();
             var argNames = new List<string>();
             foreach (var param in execParams)
             {
@@ -52,7 +53,7 @@ namespace Interpreter.Eval
             }
             ArgTypes = argTypes;
             _implArgNames = argNames;
-            
+
             // Return type
             if (!Value.IsValueType(_cmdExec.ReturnType))
                 throw new Exception($"Return type of 'Exec' from command class '{cmd.Name}' {MustBeValue}");
