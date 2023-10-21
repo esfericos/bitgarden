@@ -4,7 +4,7 @@ namespace Interpreter.Eval
 {
     // Yes, this is terribly inefficient, but who cares, anyway?
     
-    public abstract class Value
+    public abstract class Value : IEquatable<Value>
     {
         public bool IsNumber => this is Number;
         public bool IsString => this is String;
@@ -33,6 +33,8 @@ namespace Interpreter.Eval
         {
             return type == typeof(Value) || type.IsSubclassOf(typeof(Value));
         }
+
+        public abstract bool Equals(Value other);
     }
 
     public class Number : Value
@@ -48,6 +50,13 @@ namespace Interpreter.Eval
         {
             return $"Number({Value})";
         }
+
+        public override bool Equals(Value other)
+        {
+            if (other == null) return false;
+            if (GetType() != other.GetType()) return false;
+            return Math.Abs(Value - ((Number)other).Value) < double.Epsilon;
+        }
     }
 
     public class String : Value
@@ -62,6 +71,13 @@ namespace Interpreter.Eval
         public override string ToString()
         {
             return $"String(\"{Value}\")";
+        }
+
+        public override bool Equals(Value other)
+        {
+            if (other == null) return false;
+            if (GetType() != other.GetType()) return false;
+            return Value == ((String)other).Value;
         }
     }
 }
