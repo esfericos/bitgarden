@@ -30,5 +30,16 @@ namespace Tests.EditMode.Interpreter
             var ex2 = Assert.Throws<EvalException>(() => { _ = s.AsNumber; });
             Assert.AreEqual(ex2.Message, "Expected type Number, but got String");
         }
+
+        [Test]
+        public void TestIsValueType()
+        {
+            Assert.True(Value.IsValueType(typeof(Value)));
+            Assert.True(Value.IsValueType(typeof(String)));
+            Assert.True(Value.IsValueType(typeof(Number)));
+            Assert.False(Value.IsValueType(typeof(object)));
+            Assert.False(Value.IsValueType(typeof(string)));
+            Assert.False(Value.IsValueType(typeof(double)));
+        }
     }
 }

@@ -23,10 +23,15 @@ namespace Interpreter.Eval
             {
                 return (T)this;
             }
-            catch (InvalidCastException ex)
+            catch (InvalidCastException)
             {
                 throw new EvalException($"Expected type {typeof(T).Name}, but got {this.GetType().Name}");
             } 
+        }
+
+        public static bool IsValueType(Type type)
+        {
+            return type == typeof(Value) || type.IsSubclassOf(typeof(Value));
         }
     }
 
