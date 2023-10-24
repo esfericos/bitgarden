@@ -207,6 +207,10 @@ MonoBehaviour:
   gbr: {fileID: 11400000, guid: 2a59a08e80914464d8e20a41b650847d, type: 2}
   gbrb: {fileID: 11400000, guid: a20dafe3fd1b2b6439e1fcdb7a3431c6, type: 2}
   gbrt: {fileID: 11400000, guid: b5bf4f61e0afb7b45896bbb8d7be042c, type: 2}
+  gbilt: {fileID: 0}
+  gbirt: {fileID: 0}
+  gbilb: {fileID: 0}
+  gbirb: {fileID: 0}
 --- !u!4 &216823017
 Transform:
   m_ObjectHideFlags: 0
