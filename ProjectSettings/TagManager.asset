@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MapPainterHandler
   - GraphHandle
+  - StoreHandler
   layers:
   - Default
   - TransparentFX

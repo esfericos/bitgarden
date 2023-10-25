@@ -47,10 +47,10 @@ public class EnemyMovement : MonoBehaviour
     {
         LevelManager.main.path = new Vector3[]
         {
-            new Vector3(3, 12),
-            new Vector3(3, 6),
-            new Vector3(5, 7),
-            new Vector3(8, 7),
+            new Vector3(13, 14),
+            new Vector3(11, 13),
+            new Vector3(8, 13),
+            new Vector3(6, 15)
         };
         pathIndex = 0;
         target = LevelManager.main.path[pathIndex];
@@ -74,14 +74,14 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    // private void OnDrawGizmos()
-    // {
-    //     if (LevelManager.main.path != null)
-    //     {
-    //         foreach (Vector3 waypoint in LevelManager.main.path)
-    //         {
-    //             Gizmos.DrawSphere(waypoint, 0.1f);
-    //         }
-    //     }
-    // }
+    private void OnDrawGizmos()
+    {
+        if (LevelManager.main.path != null)
+        {
+            foreach (Vector3 waypoint in LevelManager.main.path)
+            {
+                Gizmos.DrawSphere(waypoint, 0.1f);
+            }
+        }
+    }
 }

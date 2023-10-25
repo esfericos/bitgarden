@@ -11,6 +11,11 @@ public class EnemyCastle : Entity
     public float timeToRepeat = 0.2f;
     private int totalEnemies = 0;
     private Vector3 position;
+    public override Price Price { get; set; }
+    public override void Start()
+    {
+        Price = new Price();
+    }
 
 
     public void SpawnEnemies(Position pos)
