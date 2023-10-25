@@ -27,5 +27,18 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }  
+    }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        var enemy = collision.collider.GetComponent<Enemy>();
+
+        if (enemy)
+        {
+            enemy.TakeHit(arrowDamage);
+        }
+        
+        Destroy(gameObject);
+    }
+    
 }
