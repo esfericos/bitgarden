@@ -1,4 +1,5 @@
 using Interpreter.Eval;
+using Interpreter.Lib.Wall;
 using Lib = Interpreter.Lib;
 using UnityEngine;
 
@@ -25,7 +26,8 @@ namespace Main
                 .AddCmd(new Lib.Math.Add())
                 .AddCmd(new Lib.Math.Sub())
                 .AddCmd(new Lib.Math.Mul())
-                .AddCmd(new Lib.Math.Div());
+                .AddCmd(new Lib.Math.Div())
+                .AddCmd(gameObject.AddComponent<CreateWall>());
         }
     }
 }
