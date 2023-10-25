@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4245678847891015307}
-  - component: {fileID: 5439804996568826221}
   - component: {fileID: 5585164346093358949}
   - component: {fileID: -1170888606888139968}
   - component: {fileID: -4400956055560875069}
@@ -30,33 +29,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: 8, z: 0}
-  m_LocalScale: {x: 22, y: 22, z: 22}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5182587483196422798}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5439804996568826221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2324332068081782510}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90594960b8ebc3048ba59613b73da2ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 64
-  turretRotationPoint: {fileID: 0}
-  arrowPrefab: {fileID: 4532369435521623333, guid: fbe0f9cdb94500b48b8d2e9a9ba905a8, type: 3}
-  shootingSound: {fileID: -1170888606888139968}
-  range: 2
-  rotationSpeed: 5
-  bps: 1
 --- !u!114 &5585164346093358949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,9 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 150577983129915833, guid: e747e1380f24c5b4b9245520eeb716d6, type: 3}
-  enemyQty: 10
+  enemyQty: 15
   timeToStart: 0.1
-  timeToRepeat: 0.2
+  timeToRepeat: 0.3
 --- !u!82 &-1170888606888139968
 AudioSource:
   m_ObjectHideFlags: 0

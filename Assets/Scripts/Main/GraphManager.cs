@@ -8,6 +8,7 @@ public class GraphManager : MonoBehaviour
 
     private MapPainter tilemap;
     private Graph graph;
+    private Store store;
 
     public Entity turret;
     public EnemyCastle enemyCastle;
@@ -18,6 +19,7 @@ public class GraphManager : MonoBehaviour
     {
         tilemap = GameObject.FindGameObjectWithTag("MapPainterHandler").GetComponent<MapPainter>();
         graph = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
+        store = GameObject.FindGameObjectWithTag("StoreHandler").GetComponent<Store>();
 
         string jsonString = jsonFile.ToString();
         RawWorld rawWorld = JsonConvert.DeserializeObject<RawWorld>(jsonString);
@@ -37,10 +39,18 @@ public class GraphManager : MonoBehaviour
     /// </summary>
     public void AddEntity(Entity entity, Position pos)
     {
+        entity.Start();
         if (graph.IsAvailableToBuild(pos))
         {
-            graph.AddEntity(entity, pos);
-            tilemap.PaintEntity(entity, pos);
+            if (store.Buy(entity.Price))
+            {
+                graph.AddEntity(entity, pos);
+                tilemap.PaintEntity(entity, pos);
+            }
+            else
+            {
+                throw new Exception("Not enough resources to build");
+            }
         }
         else
         {
