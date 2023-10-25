@@ -7,12 +7,16 @@ namespace Main
     public class GodGame : MonoBehaviour
     {
         public Evaluator Evaluator;
-        
+        public Inventory Inventory;
+        public Store Store;
+
         public void Start()
         {
             Debug.Log("Initializing GodGame");
-            
+
             Evaluator = SetupEvaluator();
+            Store = GameObject.FindGameObjectWithTag("StoreHandler").GetComponent<Store>();
+            Inventory = GameObject.FindGameObjectWithTag("StoreHandler").GetComponent<Inventory>();
         }
 
         private Evaluator SetupEvaluator()

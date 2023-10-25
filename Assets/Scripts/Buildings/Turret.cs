@@ -18,6 +18,12 @@ public class Turret : Entity
     private Transform _target;
     private float _timeUntilFire;
 
+    public override Price Price { get; set; }
+    public override void Start()
+    {
+        Price = new Price(gold: 15);
+    }
+
     private void Update()
     {
         if (_target == null)
