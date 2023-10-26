@@ -240,7 +240,17 @@ public enum BgTileKind
     Gbilt,
     Gbirt,
     Gbilb,
-    Gbirb
+    Gbirb,
+    Road1,
+    Road2,
+    Road3,
+    Road4,
+    Road5,
+    Road6,
+    Road7,
+    Road8,
+    Road9,
+    Road10
 }
 
 // Sorry.
@@ -264,6 +274,16 @@ static class BgTileKindUtils
             "gbirt" => BgTileKind.Gbirt,
             "gbilb" => BgTileKind.Gbilb,
             "gbirb" => BgTileKind.Gbirb,
+            "road1" => BgTileKind.Road1,
+            "road2" => BgTileKind.Road2,
+            "road3" => BgTileKind.Road3,
+            "road4" => BgTileKind.Road4,
+            "road5" => BgTileKind.Road5,
+            "road6" => BgTileKind.Road6,
+            "road7" => BgTileKind.Road7,
+            "road8" => BgTileKind.Road8,
+            "road9" => BgTileKind.Road9,
+            "road10" => BgTileKind.Road10,
             _ => throw new DataException("Invalid string to BgTileKind conversion"),
         };
     }
@@ -286,6 +306,16 @@ static class BgTileKindUtils
             BgTileKind.Gbirt => "gbirt",
             BgTileKind.Gbilb => "gbilb",
             BgTileKind.Gbirb => "gbirb",
+            BgTileKind.Road1 => "road1",
+            BgTileKind.Road2 => "road2",
+            BgTileKind.Road3 => "road3",
+            BgTileKind.Road4 => "road4",
+            BgTileKind.Road5 => "road5",
+            BgTileKind.Road6 => "road6",
+            BgTileKind.Road7 => "road7",
+            BgTileKind.Road8 => "road8",
+            BgTileKind.Road9 => "road9",
+            BgTileKind.Road10 => "road10",
             _ => throw new DataException("unknown BgTileKind"),
         };
     }

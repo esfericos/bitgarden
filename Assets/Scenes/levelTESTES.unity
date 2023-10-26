@@ -185,7 +185,7 @@ MonoBehaviour:
   interactiveMap: {fileID: 274587707}
   pathMap: {fileID: 1165987918}
   hoverTile: {fileID: 11400000, guid: e8d62b70a3b524d4dbbc2f94c4ad3079, type: 2}
-  selectedTile: {fileID: 11400000, guid: 0312dcbe783b62040aceb4058046855b, type: 2}
+  selectedTile: {fileID: 11400000, guid: 91b9fd5b9739b3b41916054486386077, type: 2}
 --- !u!1 &274587706
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +300,7 @@ Tilemap:
     m_Data: {r: 4.0083e-41, g: 4.0083e-41, b: 4.0083e-41, a: 4.0083e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 0.3137255}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.57254905}
   m_Origin: {x: -24, y: -23, z: 0}
   m_Size: {x: 47, y: 41, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -807,7 +807,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469268748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
   m_Name: 
@@ -3002,6 +3002,16 @@ MonoBehaviour:
   gbirt: {fileID: 11400000, guid: 81a7f4d3d3bc3ed40ac58ca5245e925c, type: 2}
   gbilb: {fileID: 11400000, guid: 417296b48b2c7f547a92dbbe8c322a27, type: 2}
   gbirb: {fileID: 11400000, guid: 8b00a498155cd8d41a8d7e9a5c94601e, type: 2}
+  road1: {fileID: 11400000, guid: b9b9fef29b542c84583078ff2e922264, type: 2}
+  road2: {fileID: 11400000, guid: 2fe2b510db0d2634eaec913980768213, type: 2}
+  road3: {fileID: 11400000, guid: a9df4af2b1d2cc344a47bca681b711e8, type: 2}
+  road4: {fileID: 11400000, guid: 33cd34ff4cdb0cf4c80a640af2075c2e, type: 2}
+  road5: {fileID: 11400000, guid: 0954fe6472e4fea44bbc2e04a2be9386, type: 2}
+  road6: {fileID: 11400000, guid: 5af3526d45636bd45b49b98e63a4b41c, type: 2}
+  road7: {fileID: 11400000, guid: 4bab8b0f66938d146ad380ead4cfe380, type: 2}
+  road8: {fileID: 11400000, guid: 55225fe9e1979e7419ba88aa890cf52d, type: 2}
+  road9: {fileID: 11400000, guid: 84fd338e9eea95440ba17a5bc483e2f5, type: 2}
+  road10: {fileID: 11400000, guid: a2aa7267a4bac1a46a07738ae2e42d20, type: 2}
 --- !u!4 &2137589841
 Transform:
   m_ObjectHideFlags: 0
