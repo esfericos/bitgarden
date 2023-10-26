@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5585164346093358949}
   - component: {fileID: -1170888606888139968}
   m_Layer: 0
-  m_Name: EnemyCastle
+  m_Name: EnemyPortal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
