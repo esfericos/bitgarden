@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using Interfaces;
+using System.Timers;
 using UnityEngine;
+using Interfaces;
 
 public class Enemy : MonoBehaviour, IDamageable
-{   
+{  
+    
     public AudioSource HitSound;
     public int Hitpoints;
     public int MaxHitpoints = 5;
     public HealthBarBehaviour HealthBar;
     public int EnemyDamage = 2;
+    public bool canDamage = true;
+    private float coolDown = 1.25f;
 
 
     public void Start()
@@ -31,14 +35,21 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
     
-    private void OnCollisionEnter2D(Collision2D other)
+    private IEnumerator OnCollisionStay2D(Collision2D other)
     {
-
+        
         IDamageable structure = other.gameObject.GetComponent<IDamageable>();
 
-        if (other.gameObject.CompareTag("Structure"))
+        if (other.gameObject.CompareTag("Structure") && canDamage)
         {
+            canDamage = false;
+            
             structure.TakeDamage(EnemyDamage);
+            
+            yield return new WaitForSeconds(coolDown);
+
+            canDamage = true;
+            
         }
         
     }
