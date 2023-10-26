@@ -5,7 +5,7 @@ public class Turret : Entity
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
-
+    [SerializeField] private HealthBarBehaviour HealthBar;
     [SerializeField] private Transform turretRotationPoint;
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] private AudioSource shootingSound;
@@ -14,6 +14,8 @@ public class Turret : Entity
     [SerializeField] private float range = 3f;
     [SerializeField] private float rotationSpeed = 200f;
     [SerializeField] private float bps = 1f;
+    [SerializeField] private int Hitpoints;
+    [SerializeField] private int MaxHitpoints = 5;
 
     private Transform _target;
     private float _timeUntilFire;
@@ -22,6 +24,9 @@ public class Turret : Entity
     public override void Start()
     {
         Price = new Price(gold: 15);
+        Hitpoints = MaxHitpoints;
+        HealthBar.SetHealth(Hitpoints, MaxHitpoints);
+
     }
 
     private void Update()
@@ -82,5 +87,16 @@ public class Turret : Entity
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, Vector3.forward, range);
     }
+    
+    public void TakeHit(int damage)
+    {   
 
+        Hitpoints -= damage;
+        HealthBar.SetHealth(Hitpoints, MaxHitpoints);
+
+        if (Hitpoints <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
