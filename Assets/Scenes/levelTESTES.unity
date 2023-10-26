@@ -185,7 +185,7 @@ MonoBehaviour:
   interactiveMap: {fileID: 274587707}
   pathMap: {fileID: 1165987918}
   hoverTile: {fileID: 11400000, guid: e8d62b70a3b524d4dbbc2f94c4ad3079, type: 2}
-  selectedTile: {fileID: 11400000, guid: 0312dcbe783b62040aceb4058046855b, type: 2}
+  selectedTile: {fileID: 11400000, guid: 91b9fd5b9739b3b41916054486386077, type: 2}
 --- !u!1 &274587706
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +300,7 @@ Tilemap:
     m_Data: {r: 4.0083e-41, g: 4.0083e-41, b: 4.0083e-41, a: 4.0083e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 0.3137255}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.57254905}
   m_Origin: {x: -24, y: -23, z: 0}
   m_Size: {x: 47, y: 41, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
