@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEditor;
+using Interfaces;
 
-public class Turret : Entity
+public class Turret : Entity, IDamageable
 {
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
@@ -88,7 +89,7 @@ public class Turret : Entity
         Handles.DrawWireDisc(transform.position, Vector3.forward, range);
     }
     
-    public void TakeHit(int damage)
+    public void TakeDamage(int damage)
     {   
 
         Hitpoints -= damage;

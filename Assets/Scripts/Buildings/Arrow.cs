@@ -43,7 +43,7 @@ public class Arrow : MonoBehaviour
 
         if (enemy)
         {
-            enemy.TakeHit(arrowDamage);
+            enemy.TakeDamage(arrowDamage);
         }
         
         Destroy(gameObject);

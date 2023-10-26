@@ -49,8 +49,8 @@ public class EnemyMovement : MonoBehaviour
         {
             new Vector3(13, 14),
             new Vector3(11, 13),
-            new Vector3(8, 13),
-            new Vector3(6, 15)
+            new Vector3(8, 14),
+            new Vector3(7, 15)
         };
         pathIndex = 0;
         target = LevelManager.main.path[pathIndex];
