@@ -26,16 +26,16 @@ public class GridController : MonoBehaviour
         if (!mousePos.Equals(previousMousePos))
         {
             if (previousClickedPos == mousePos) return;
-            interactiveMap.SetTile(previousMousePos, null); // Remove old hoverTile
-            interactiveMap.SetTile(mousePos, hoverTile);
-            previousMousePos = mousePos;
+             interactiveMap.SetTile(previousMousePos, null); // Remove old hoverTile
+             interactiveMap.SetTile(mousePos, hoverTile);
+             previousMousePos = mousePos;
             //Debug.Log("Posicao do mouse(no world): " + Camera.main.ScreenToWorldPoint(Input.mousePosition) + " posicao pra tile: " + mousePos);
         }
 
         // Left mouse click 
         if (Input.GetMouseButton(0)){
             Debug.Log("Adicionar orange na posicao: " + mousePos);
-            interactiveMap.SetTile(previousMousePos, null); // Remove old hoverTile
+            // interactiveMap.SetTile(previousMousePos, null); // Remove old hoverTile
             interactiveMap.SetTile(mousePos, selectedTile);
             previousClickedPos = mousePos;
         }
