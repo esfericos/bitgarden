@@ -2990,6 +2990,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemap: {fileID: 1165987918}
   grass: {fileID: 11400000, guid: 93fe4e2573096484085c760a87a13457, type: 2}
+  grasseffecta: {fileID: 11400000, guid: 25fa90ca7094ffc428c0b022fd20908e, type: 2}
+  grasseffectb: {fileID: 11400000, guid: c17506ac6be01d549b2a6d31e40dc5db, type: 2}
   gbt: {fileID: 11400000, guid: 674fa6ac034688b42a19cfe09a2b9f0c, type: 2}
   gbb: {fileID: 11400000, guid: 2bc65531926ecc849af2f99c1571e45a, type: 2}
   gbl: {fileID: 11400000, guid: 6dcd0805e5be8554085c2607f57a9558, type: 2}
