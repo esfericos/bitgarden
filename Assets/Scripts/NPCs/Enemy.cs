@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {   
     public AudioSource HitSound;
     public int Hitpoints;
     public int MaxHitpoints = 5;
     public HealthBarBehaviour HealthBar;
+    public int EnemyDamage = 2;
 
 
     public void Start()
@@ -16,7 +18,7 @@ public class Enemy : MonoBehaviour
         HealthBar.SetHealth(Hitpoints, MaxHitpoints);
     }
 
-    public void TakeHit(int damage)
+    public void TakeDamage(int damage)
     {   
 
         Hitpoints -= damage;
@@ -27,5 +29,17 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+
+        IDamageable structure = other.gameObject.GetComponent<IDamageable>();
+
+        if (other.gameObject.CompareTag("Structure"))
+        {
+            structure.TakeDamage(EnemyDamage);
+        }
+        
     }
 }
