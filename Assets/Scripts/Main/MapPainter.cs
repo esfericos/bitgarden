@@ -2,12 +2,15 @@ using System;
 using System.Data;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 public class MapPainter : MonoBehaviour
 {
     public Tilemap tilemap;
 
     public Tile grass;
+    public Tile grasseffecta;
+    public Tile grasseffectb;
     public Tile gbt;
     public Tile gbb;
     public Tile gbl;
@@ -46,7 +49,7 @@ public class MapPainter : MonoBehaviour
             BgTileKind.Gbr => gbr,
             BgTileKind.Gblb => gblb,
             BgTileKind.Gbrt => gbrt,
-            BgTileKind.Grass => grass,
+            BgTileKind.Grass => GetGrassTipe(),
             BgTileKind.Gbilt => gbilt,
             BgTileKind.Gbirt => gbirt,
             BgTileKind.Gbilb => gbilb,
@@ -68,6 +71,20 @@ public class MapPainter : MonoBehaviour
         tilemap.SetTile(position, selected);
     }
 
+
+    private Tile GetGrassTipe()
+{
+        float randomNumber = Random.Range(0, 10);
+        if(randomNumber == 1 )
+        {
+            return grasseffecta;
+        } else
+        {
+            return grass;
+        }
+
+
+}
     /// <summary>
     /// Renders Entity in the map.
     /// </summary>
