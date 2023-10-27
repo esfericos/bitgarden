@@ -7,19 +7,23 @@ namespace Interpreter.Lib.Wall
     {
         private readonly GraphManager _gm;
         public Entity wall;
+        private GraphManager GraphHandler;
 
         public CreateWall(GraphManager gm)
         {
             this._gm = gm;
         }
+
+
         public Nil Exec(Number x, Number y)
         {
+            GraphHandler = GameObject.FindGameObjectWithTag("GraphData").GetComponent<GraphManager>();
             //@TODO: check for resources
-            
-            ushort xf = (ushort) x.AsNumber();
-            ushort yf = (ushort) y.AsNumber();
-            
-            _gm.AddEntity(wall, new Position(xf, yf));
+
+            ushort xf = (ushort)x.AsNumber();
+            ushort yf = (ushort)y.AsNumber();
+
+            GraphHandler.AddTowerGambiarra(xf, yf);
 
             return new Nil();
         }

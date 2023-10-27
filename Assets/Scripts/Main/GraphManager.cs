@@ -9,10 +9,11 @@ public class GraphManager : MonoBehaviour
     private MapPainter tilemap;
     private Graph graph;
     private Store store;
+    public Grid gridGamb;
 
     public Entity turret;
     public EnemyCastle enemyCastle;
-    public Entity wall;
+    public GameObject wall;
 
     public TextAsset jsonFile;
     // Start is called before the first frame update
@@ -32,7 +33,7 @@ public class GraphManager : MonoBehaviour
         AddEntity(turret, new Position(x: 7, y: 15));
         AddEntity(turret, new Position(x: 7, y: 12));
         AddEntity(enemyCastle, new Position(x: 12, y: 14));
-        AddEntity(wall, new Position(x: 10, y: 14));
+        // AddEntity(wall, new Position(x: 10, y: 14));
         enemyCastle.SpawnEnemies(new Position(x: 12, y: 14));
     }
 
@@ -58,6 +59,13 @@ public class GraphManager : MonoBehaviour
         {
             throw new Exception($"Tile at {pos} unavailable");
         }
+    }
+
+    public void AddTowerGambiarra(ushort xf, ushort yf)
+    {
+
+        Vector3 posicao = new Vector3(xf + 0.5f, yf + 0.5f, 0);
+        Instantiate(wall, posicao, Quaternion.identity);
     }
 
     public class RawWorld
