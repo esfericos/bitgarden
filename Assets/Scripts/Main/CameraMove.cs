@@ -24,7 +24,9 @@ public class CameraMove : MonoBehaviour
     /** Camera Zoom Control */
     private void Update()
     {
-        if(Input.mouseScrollDelta.y > 0)
+        if (Input.mousePosition.x >= 1070) return;
+
+        if (Input.mouseScrollDelta.y > 0)
         {
             cam.orthographicSize -= ZoomChange * Time.deltaTime * SmoothChange;
         }
@@ -40,7 +42,9 @@ public class CameraMove : MonoBehaviour
     /** Camera X,Y Movement */
     private void LateUpdate()
     {
-        if(Input.GetMouseButton(0))
+        if (Input.mousePosition.x >= 1070) return;
+
+        if (Input.GetMouseButton(0))
         {
             Difference = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - Camera.main.transform.position);
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class GridController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tilemap pathMap = null;
     [SerializeField] private Tile hoverTile = null;
     [SerializeField] private Tile selectedTile = null;
+
+    [SerializeField] private TMP_Text tileCoordsText;
 
     private Vector3Int previousMousePos = new Vector3Int();
     private Vector3Int previousClickedPos = new Vector3Int();
@@ -22,6 +25,8 @@ public class GridController : MonoBehaviour
 
     void Update()
     {
+        if (Input.mousePosition.x >= 1070) return;
+
         Vector3Int mousePos = GetMousePosition();
         if (!mousePos.Equals(previousMousePos))
         {
@@ -35,7 +40,7 @@ public class GridController : MonoBehaviour
 
         // Left mouse click 
         if (Input.GetMouseButton(0)){
-            Debug.Log("[Debug]: Selected Tile Position: " + mousePos);
+            tileCoordsText.text = mousePos.x + "," + mousePos.y;
             interactiveMap.SetTile(previousClickedPos, null); // Remove old hoverTile
             interactiveMap.SetTile(mousePos, selectedTile);
             previousClickedPos = mousePos;
