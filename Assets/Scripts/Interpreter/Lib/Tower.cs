@@ -6,16 +6,18 @@ namespace Interpreter.Lib.Tower
     public class CreateTower : MonoBehaviour
     {
         public GameObject obj;
+        private GraphManager GraphHandler;
 
         public Nil Exec(Number x, Number y)
         {
+            GraphHandler = GameObject.FindGameObjectWithTag("GraphData").GetComponent<GraphManager>();
+
             //@TODO: check for resources (waiting @ClaraOMello)
 
-            float xPosition = (float) x.AsNumber();
-            float yPosition = (float)y.AsNumber();
+            ushort xf = (ushort)x.AsNumber();
+            ushort yf = (ushort)y.AsNumber();
 
-            GameObject tower = Instantiate(obj);
-            tower.transform.position = new Vector3(xPosition, yPosition);
+            GraphHandler.AddTowerGambiarra2(xf, yf);
 
             return new Nil();
         }
