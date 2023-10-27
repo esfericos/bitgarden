@@ -13,6 +13,7 @@ public class Wall : Entity
     public override Price Price { get; set; }
     public override void Start()
     {
+        Price = new Price();
         Hitpoints = MaxHitpoints;
         HealthBar.SetHealth(Hitpoints, MaxHitpoints);   
     }

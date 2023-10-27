@@ -24,7 +24,7 @@ public class CameraMove : MonoBehaviour
     /** Camera Zoom Control */
     private void Update()
     {
-        if (Input.mousePosition.x >= 1070) return;
+        if (Input.mousePosition.x >= 1450) return;
 
         if (Input.mouseScrollDelta.y > 0)
         {
@@ -42,7 +42,7 @@ public class CameraMove : MonoBehaviour
     /** Camera X,Y Movement */
     private void LateUpdate()
     {
-        if (Input.mousePosition.x >= 1070) return;
+        if (Input.mousePosition.x >= 1450) return;
 
         if (Input.GetMouseButton(0))
         {
