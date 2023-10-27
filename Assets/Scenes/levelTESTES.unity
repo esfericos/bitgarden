@@ -4396,6 +4396,7 @@ MonoBehaviour:
   turret: {fileID: 3421758336216858795, guid: fca82d03caeee8c4f8aef01fcde79e0e, type: 3}
   enemyCastle: {fileID: 5585164346093358949, guid: 9115145dad31df749a8ce4b02d35e49b, type: 3}
   wall: {fileID: 8716738003659168067, guid: 312ff0eaa26dd5f45986d709b0006638, type: 3}
+  tower: {fileID: 914189471983534127, guid: fca82d03caeee8c4f8aef01fcde79e0e, type: 3}
   jsonFile: {fileID: 4900000, guid: 73639c02f238f0b408c9ec3eb0f6baf6, type: 3}
 --- !u!4 &1557151289
 Transform:

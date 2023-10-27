@@ -14,6 +14,7 @@ public class GraphManager : MonoBehaviour
     public Entity turret;
     public EnemyCastle enemyCastle;
     public GameObject wall;
+    public GameObject tower;
 
     public TextAsset jsonFile;
     // Start is called before the first frame update
@@ -64,9 +65,17 @@ public class GraphManager : MonoBehaviour
     public void AddTowerGambiarra(ushort xf, ushort yf)
     {
 
-        Vector3 posicao = new Vector3(xf + 0.5f, yf + 0.5f, 0);
+        Vector3 posicao = new Vector3(xf + 0.55f, yf + 0.5f, 0);
         Instantiate(wall, posicao, Quaternion.identity);
     }
+
+    public void AddTower2Gambiarra(ushort xf, ushort yf)
+    {
+
+        Vector3 posicao = new Vector3(xf + 0.55f, yf + 1f, 0);
+        Instantiate(tower, posicao, Quaternion.identity);
+    }
+
 
     public class RawWorld
     {
