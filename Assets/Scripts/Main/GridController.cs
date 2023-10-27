@@ -25,7 +25,7 @@ public class GridController : MonoBehaviour
 
     void Update()
     {
-        if (Input.mousePosition.x >= 1070) return;
+        if (Input.mousePosition.x >= 1450) return;
 
         Vector3Int mousePos = GetMousePosition();
         if (!mousePos.Equals(previousMousePos))

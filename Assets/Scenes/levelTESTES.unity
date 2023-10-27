@@ -1728,7 +1728,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1333784525}
   m_Direction: 2
   m_Value: 1.0000029
-  m_Size: 0.60191387
+  m_Size: 0.6019138
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4394,6 +4394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 3421758336216858795, guid: fca82d03caeee8c4f8aef01fcde79e0e, type: 3}
   enemyCastle: {fileID: 5585164346093358949, guid: 9115145dad31df749a8ce4b02d35e49b, type: 3}
+  wall: {fileID: -5857003083474852966, guid: 312ff0eaa26dd5f45986d709b0006638, type: 3}
   jsonFile: {fileID: 4900000, guid: 73639c02f238f0b408c9ec3eb0f6baf6, type: 3}
 --- !u!4 &1557151289
 Transform:

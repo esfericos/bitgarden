@@ -3,20 +3,23 @@ using UnityEngine;
 
 namespace Interpreter.Lib.Wall
 {
-    public class CreateWall : MonoBehaviour
+    public class CreateWall
     {
-        public GameObject obj;
-        public Nil Exec(Number x1, Number y1)
+        private readonly GraphManager _gm;
+        public Entity wall;
+
+        public CreateWall(GraphManager gm)
+        {
+            this._gm = gm;
+        }
+        public Nil Exec(Number x, Number y)
         {
             //@TODO: check for resources
             
-            float x1f = (float) x1.AsNumber();
-            float y1f = (float) y1.AsNumber();
+            ushort xf = (ushort) x.AsNumber();
+            ushort yf = (ushort) y.AsNumber();
             
-            GameObject wall = Instantiate(obj);
-            wall.transform.position = new Vector3(x1f, y1f);
-            
-            Debug.Log("Creating wall at" + x1 + ","+y1);
+            _gm.AddEntity(wall, new Position(xf, yf));
 
             return new Nil();
         }
