@@ -3,28 +3,17 @@ using UnityEngine;
 
 namespace Interpreter.Lib.Wall
 {
-    public class CreateWall
+    public class CreateWall : MonoBehaviour
     {
-        private readonly GraphManager _gm;
-        public Entity wall;
-        private GraphManager GraphHandler;
-
-        public CreateWall(GraphManager gm)
-        {
-            this._gm = gm;
-        }
-
-
         public Nil Exec(Number x, Number y)
         {
-            GraphHandler = GameObject.FindGameObjectWithTag("GraphData").GetComponent<GraphManager>();
             //@TODO: check for resources
 
             ushort xf = (ushort)x.AsNumber();
             ushort yf = (ushort)y.AsNumber();
 
-            GraphHandler.AddTowerGambiarra(xf, yf);
-
+            Object wall = Instantiate(Resources.Load("Prefabs/Buildings/Wall"), new Vector3(xf, yf, 1), Quaternion.identity);
+            
             return new Nil();
         }
     }
