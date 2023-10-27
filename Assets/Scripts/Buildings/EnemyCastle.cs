@@ -6,7 +6,7 @@ using UnityEngine.Playables;
 public class EnemyCastle : Entity
 {
     public EnemyMovement enemy;
-    public int enemyQty = 10;
+    public int enemyQty = 1;
     public float timeToStart = 0.1f;
     public float timeToRepeat = 0.2f;
     private int totalEnemies = 0;

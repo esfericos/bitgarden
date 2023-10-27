@@ -6,32 +6,37 @@ using Interfaces;
 
 public class Enemy : MonoBehaviour, IDamageable
 {  
-    
     public AudioSource HitSound;
     public int Hitpoints;
     public int MaxHitpoints = 5;
     public HealthBarBehaviour HealthBar;
     public int EnemyDamage = 2;
     public bool canDamage = true;
+    private bool _canTakeDamage = true;
     private float coolDown = 1.25f;
-
+    private Animator _animator;
 
     public void Start()
     {
+        _animator = gameObject.GetComponent<Animator>();
         Hitpoints = MaxHitpoints;
         HealthBar.SetHealth(Hitpoints, MaxHitpoints);
     }
 
     public void TakeDamage(int damage)
-    {   
-
-        Hitpoints -= damage;
-        HitSound.Play();
-        HealthBar.SetHealth(Hitpoints, MaxHitpoints);
-
-        if (Hitpoints <= 0)
+    {
+        if (_canTakeDamage)
         {
-            Destroy(gameObject);
+            Hitpoints -= damage;
+            HitSound.Play();
+            HealthBar.SetHealth(Hitpoints, MaxHitpoints);
+
+            if (Hitpoints <= 0)
+            {
+                _canTakeDamage = false;
+                _animator.SetTrigger("Die");
+                Destroy(gameObject, 1f);
+            }
         }
     }
     

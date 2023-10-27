@@ -497,7 +497,7 @@ Animator:
   m_GameObject: {fileID: 8878845969960019099}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f4d8f965a18598842890b7896a71f8bb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 659c03065e57ae44fbfca4e07f9a7523, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -638,6 +638,8 @@ MonoBehaviour:
   Hitpoints: 0
   MaxHitpoints: 5
   HealthBar: {fileID: 237300271103315719}
+  EnemyDamage: 2
+  canDamage: 1
 --- !u!82 &8803947756767036912
 AudioSource:
   m_ObjectHideFlags: 0
