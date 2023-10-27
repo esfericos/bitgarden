@@ -162,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 32285477}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1728,7 +1728,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1333784525}
   m_Direction: 2
   m_Value: 1.0000029
-  m_Size: 0.6019138
+  m_Size: 0.60191387
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3759,7 +3759,7 @@ Transform:
   m_GameObject: {fileID: 1165987915}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 0.22, z: 0}
+  m_LocalPosition: {x: 0.05, y: 0.22, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4375,7 +4375,7 @@ GameObject:
   - component: {fileID: 1557151288}
   m_Layer: 0
   m_Name: GraphData
-  m_TagString: Untagged
+  m_TagString: GraphData
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4392,9 +4392,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3fb8f2d7a1a8e349831423a77d026c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridGamb: {fileID: 32285478}
   turret: {fileID: 3421758336216858795, guid: fca82d03caeee8c4f8aef01fcde79e0e, type: 3}
   enemyCastle: {fileID: 5585164346093358949, guid: 9115145dad31df749a8ce4b02d35e49b, type: 3}
-  wall: {fileID: -5857003083474852966, guid: 312ff0eaa26dd5f45986d709b0006638, type: 3}
+  wall: {fileID: 8716738003659168067, guid: 312ff0eaa26dd5f45986d709b0006638, type: 3}
   jsonFile: {fileID: 4900000, guid: 73639c02f238f0b408c9ec3eb0f6baf6, type: 3}
 --- !u!4 &1557151289
 Transform:

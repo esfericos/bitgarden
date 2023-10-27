@@ -9,6 +9,7 @@ TagManager:
   - StoreHandler
   - Structure
   - GodGame
+  - GraphData
   layers:
   - Default
   - TransparentFX
