@@ -27,7 +27,8 @@ namespace Main
                 .AddCmd(new Lib.Math.Sub())
                 .AddCmd(new Lib.Math.Mul())
                 .AddCmd(new Lib.Math.Div())
-                .AddCmd(new Lib.Wall.CreateWall(GetComponent<GraphManager>()));
+                .AddCmd(new Lib.Wall.CreateWall(GetComponent<GraphManager>()))
+                .AddCmd(new Lib.Tower.CreateTower());
         }
     }
 }
