@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class Graph : MonoBehaviour
 
     private readonly Dictionary<Position, Directions> _topology = new();
     private readonly Dictionary<Position, BgTile> _meta = new();
+
+    public uint[] entities;
+
 
     public Graph() { }
 
@@ -34,6 +38,8 @@ public class Graph : MonoBehaviour
             var kind = BgTileKindUtils.FromString(rm.Type);
             _meta.Add(pos, new BgTile(kind, pos));
         }
+
+        entities = new uint[0];
     }
 
     /// <summary>
@@ -42,6 +48,7 @@ public class Graph : MonoBehaviour
     public void AddEntity(Entity entity, Position pos)
     {
         _meta[pos].Entity = entity;
+        if (entity.GetType() != typeof(EnemyCastle)) entities = entities.Append(pos.ToId()).ToArray();
     }
 
     /// <summary>

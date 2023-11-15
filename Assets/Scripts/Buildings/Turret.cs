@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using Interfaces;
+using System.Linq;
 
 public class Turret : Entity, IDamageable
 {
@@ -18,13 +19,15 @@ public class Turret : Entity, IDamageable
     [SerializeField] private int Hitpoints;
     [SerializeField] private int MaxHitpoints = 5;
 
+    Position position;
+
     private Transform _target;
     private float _timeUntilFire;
 
     public override Price Price { get; set; }
     public override void Start()
     {
-        Price = new Price(gold: 25);
+        Price = new Price(gold: 0);
         Hitpoints = MaxHitpoints;
         HealthBar.SetHealth(Hitpoints, MaxHitpoints);
 
@@ -88,15 +91,18 @@ public class Turret : Entity, IDamageable
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, Vector3.forward, range);
     }
-    
+
     public void TakeDamage(int damage)
-    {   
+    {
 
         Hitpoints -= damage;
         HealthBar.SetHealth(Hitpoints, MaxHitpoints);
 
         if (Hitpoints <= 0)
         {
+            position = new Position(x: (ushort)(gameObject.transform.position.x - 1), y: (ushort)(gameObject.transform.position.y - 1));
+            Graph grafo = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
+            grafo.entities = grafo.entities.Where(entity => entity != position.ToId()).ToArray();
             Destroy(gameObject);
         }
     }

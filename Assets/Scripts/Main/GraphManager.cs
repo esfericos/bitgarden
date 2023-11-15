@@ -33,6 +33,7 @@ public class GraphManager : MonoBehaviour
 
         AddEntity(turret, new Position(x: 7, y: 15));
         AddEntity(turret, new Position(x: 7, y: 12));
+        AddEntity(turret, new Position(x: 11, y: 13));
         AddEntity(enemyCastle, new Position(x: 12, y: 14));
         // AddEntity(wall, new Position(x: 10, y: 14));
         enemyCastle.SpawnEnemies(new Position(x: 12, y: 14));
