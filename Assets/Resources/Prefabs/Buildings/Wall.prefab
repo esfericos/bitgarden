@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 8500338155491371720}
   - component: {fileID: -5857003083474852966}
   m_Layer: 0
-  m_Name: wall_tower
+  m_Name: Wall
   m_TagString: Structure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

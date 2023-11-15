@@ -1,19 +1,18 @@
 using System;
+using System.Collections.Generic;
 using Interpreter.Eval.Type;
+using Main;
 using UnityEngine;
 
 namespace Interpreter.Lib.Wall
 {
     public class CreateWall : MonoBehaviour
     {
-        
         public Nil Exec(Number x, Number y)
         {
             //@TODO: check for resources
 
-            int typeNum = 0;
-            string type = "wall_tower";
-            string path = "Prefabs/Buildings/Walls/" + type;
+            int type = 0;
             Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/wall_basic");
             
             ushort xf = (ushort)x.AsNumber();
@@ -24,6 +23,7 @@ namespace Interpreter.Lib.Wall
             if (plot.Length > 0)
             {
                 Console.print("nao pode");
+                //@TODO: terminal warning
             }
             else
             {
@@ -45,10 +45,10 @@ namespace Interpreter.Lib.Wall
                     {
                         continue; }
                     
-                    if (obj.transform.position.x > (float)(xf + 0.05)) { typeNum += 2; otherType = 8; }
-                    if (obj.transform.position.x < (float)(xf + 0.05)) { typeNum += 8; otherType = 2; }
-                    if (obj.transform.position.y > (float)(yf + 0.1)) { typeNum += 1; otherType = 4; }
-                    if (obj.transform.position.y < (float)(yf + 0.1)) { typeNum += 4; otherType = 1; }
+                    if (obj.transform.position.x > (float)(xf + 0.05)) { type += 2; otherType = 8; }
+                    if (obj.transform.position.x < (float)(xf + 0.05)) { type += 8; otherType = 2; }
+                    if (obj.transform.position.y > (float)(yf + 0.1)) { type += 1; otherType = 4; }
+                    if (obj.transform.position.y < (float)(yf + 0.1)) { type += 4; otherType = 1; }
                     
                     objType += otherType;
                     obj.GetComponent<global::Wall>().Type = objType;
@@ -65,20 +65,76 @@ namespace Interpreter.Lib.Wall
                     if (objType == 14 || objType == 15) { obj.GetComponent<SpriteRenderer>().sprite = sprites[6]; }
                 }
                 
-                GameObject wall = Instantiate(Resources.Load(path), new Vector3(xf + 0.05f, yf + 0.1f, 1), Quaternion.identity) as GameObject;
+                GameObject wall = Instantiate(Resources.Load("Prefabs/Buildings/Wall"), new Vector3(xf + 0.05f, yf + 0.1f, 1), Quaternion.identity) as GameObject;
                 
-                if (typeNum == 0 || typeNum == 1) { wall.GetComponent<SpriteRenderer>().sprite = sprites[7]; }
-                if (typeNum == 2 || typeNum == 3) { wall.GetComponent<SpriteRenderer>().sprite = sprites[0]; }
-                if (typeNum == 4) { wall.GetComponent<SpriteRenderer>().sprite = sprites[10]; }
-                if (typeNum == 5) { wall.GetComponent<SpriteRenderer>().sprite = sprites[9]; }
-                if (typeNum == 6 || typeNum == 7) { wall.GetComponent<SpriteRenderer>().sprite = sprites[2]; }
-                if (typeNum == 8 || typeNum == 9) { wall.GetComponent<SpriteRenderer>().sprite = sprites[1]; }
-                if (typeNum == 10) { wall.GetComponent<SpriteRenderer>().sprite = sprites[4]; }
-                if (typeNum == 11) { wall.GetComponent<SpriteRenderer>().sprite = sprites[5]; }
-                if (typeNum == 12 || typeNum == 13) { wall.GetComponent<SpriteRenderer>().sprite = sprites[3]; }
-                if (typeNum == 14 || typeNum == 15) { wall.GetComponent<SpriteRenderer>().sprite = sprites[6]; }
+                if (type == 0 || type == 1) { wall.GetComponent<SpriteRenderer>().sprite = sprites[7]; }
+                if (type == 2 || type == 3) { wall.GetComponent<SpriteRenderer>().sprite = sprites[0]; }
+                if (type == 4) { wall.GetComponent<SpriteRenderer>().sprite = sprites[10]; }
+                if (type == 5) { wall.GetComponent<SpriteRenderer>().sprite = sprites[9]; }
+                if (type == 6 || type == 7) { wall.GetComponent<SpriteRenderer>().sprite = sprites[2]; }
+                if (type == 8 || type == 9) { wall.GetComponent<SpriteRenderer>().sprite = sprites[1]; }
+                if (type == 10) { wall.GetComponent<SpriteRenderer>().sprite = sprites[4]; }
+                if (type == 11) { wall.GetComponent<SpriteRenderer>().sprite = sprites[5]; }
+                if (type == 12 || type == 13) { wall.GetComponent<SpriteRenderer>().sprite = sprites[3]; }
+                if (type == 14 || type == 15) { wall.GetComponent<SpriteRenderer>().sprite = sprites[6]; }
                 
-                wall.GetComponent<global::Wall>().Type = typeNum;
+                wall.GetComponent<global::Wall>().Type = type;
+            }
+            
+            return new Nil();
+        }
+    }
+    public class CreateManyWalls
+    {
+        public Nil Exec(Number x1, Number y1, Number x2, Number y2)
+        {
+            //@TODO: check for resources
+            
+            GodGame controller = GameObject.FindGameObjectWithTag("GodGame").GetComponent<GodGame>();
+
+            int dir = 0;
+
+            ushort xf1 = (ushort)x1.AsNumber();
+            ushort yf1 = (ushort)y1.AsNumber();
+            ushort xf2 = (ushort)x2.AsNumber();
+            ushort yf2 = (ushort)y2.AsNumber();
+
+            if (xf1 == xf2 && yf1 == yf2)
+            {
+                //@TODO: terminal error
+                Console.print("nao pode");
+            }
+            else
+            {
+                if (xf1 > xf2)
+                {
+                    for (int i = xf2; i <= xf1; i++)
+                    {
+                        controller.Evaluator.ExecProgram("createWall(x:" + i + ", y: " + yf1 + ")");
+                    }
+                }
+                else
+                {
+                    for (int i = xf1; i <= xf2; i++)
+                    {
+                        controller.Evaluator.ExecProgram("createWall(x:" + i + ", y: " + yf1 + ")");
+                    }
+                }
+                
+                if (yf1 > yf2)
+                {
+                    for (int i = yf2; i <= yf1; i++)
+                    {
+                        controller.Evaluator.ExecProgram("createWall(x:" + xf2 + ", y: " + i + ")");
+                    }
+                }
+                else
+                {
+                    for (int i = yf1; i <= yf2; i++)
+                    {
+                        controller.Evaluator.ExecProgram("createWall(x:" + xf2 + ", y: " + i + ")");
+                    }
+                }
             }
             
             return new Nil();

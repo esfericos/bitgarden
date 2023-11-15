@@ -28,6 +28,7 @@ namespace Main
                 .AddCmd(new Lib.Math.Mul())
                 .AddCmd(new Lib.Math.Div())
                 .AddCmd(new Lib.Wall.CreateWall())
+                .AddCmd(new Lib.Wall.CreateManyWalls())
                 .AddCmd(new Lib.Tower.CreateTower());
         }
     }
