@@ -9,6 +9,7 @@ public class Wall : Entity
     [Header("Attributes")]
     [SerializeField] private int Hitpoints;
     [SerializeField] private int MaxHitpoints;
+    public int Type = 0;
     
     public override Price Price { get; set; }
     public override void Start()

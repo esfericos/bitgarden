@@ -19,7 +19,7 @@ TagManager:
   - UI
   - Enemy
   - Arrow
-  - 
+  - Buildings
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Turret
     uniqueID: 1546584073
+    locked: 0
+  - name: Buildings
+    uniqueID: 4004616251
     locked: 0
   - name: NPC
     uniqueID: 3464729967
