@@ -1,35 +1,56 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 
-public class Pathfinding
+public class PathFinding : MonoBehaviour
 {
     private const int MOVE_STRAIGHT_COST = 1;
-    private const int MOVE_DIAGONAL_COST = Int32.MaxValue; // nice try (nt)
 
-    public static Pathfinding Instance { get; private set; }
-
-    private Grid<PathNode> grid;
+    private List<Position> walkables;
     private List<PathNode> openList;
     private List<PathNode> closedList;
+    private Graph graph;
 
-    public Pathfinding(int width, int height)
+    public void Update()
     {
-        Instance = this;
-        grid = new Grid<PathNode>(width, height, 10f, Vector3.zero, (Grid<PathNode> g, int x, int y) => new PathNode(g, x, y));
+        graph = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
+        if (graph._initialized)
+        {
+            IEnumerable<Position> topology = graph.WalkableNodes();
+            walkables = new List<Position>();
+            foreach (var t in topology)
+            {
+                if (graph.GetMeta(t).IsWalkable)
+                {
+                    walkables.Add(t);
+                }
+            }
+        }
     }
 
-    public Grid<PathNode> GetGrid()
+    public List<Vector3> FindPath(Position start)
     {
-        return grid;
+        Position end = new(x: 16, y: 24);
+        // achar posicao de entidade mais proxima
+        /*
+        {
+            new Vector3(13, 14),
+            new Vector3(11, 13),
+            new Vector3(8, 14),
+            new Vector3(7, 15)
+        }
+        */
+        // return new List<Vector3> { new Vector3(start.X, start.Y), new Vector3(end.X, end.Y), };
+        return FindPath(start, end);
     }
 
-    public List<Vector3> FindPath(Vector3 startWorldPosition, Vector3 endWorldPosition)
+    public List<Vector3> FindPath(Position start, Position end)
     {
-        grid.GetXY(startWorldPosition, out int startX, out int startY);
-        grid.GetXY(endWorldPosition, out int endX, out int endY);
-
-        List<PathNode> path = FindPath(startX, startY, endX, endY);
+        List<PathNode> path = FindPath(new PathNode(graph.GetMeta(start)), new PathNode(graph.GetMeta(end)));
+        Debug.Log("Caminho ENCONTRADO: " + (path == null ? "null" : path.ToString()));
         if (path == null)
         {
             return null;
@@ -37,21 +58,21 @@ public class Pathfinding
         else
         {
             List<Vector3> vectorPath = new List<Vector3>();
+            Debug.Log("Tamanho caminho: " + vectorPath.Count);
             foreach (PathNode pathNode in path)
             {
-                vectorPath.Add(new Vector3(pathNode.x, pathNode.y) * grid.GetCellSize() + Vector3.one * grid.GetCellSize() * .5f);
+                vectorPath.Add(new Vector3(pathNode.x, pathNode.y));
             }
             return vectorPath;
         }
     }
 
-    public List<PathNode> FindPath(int startX, int startY, int endX, int endY)
+    public List<PathNode> FindPath(PathNode startNode, PathNode endNode)
     {
-        PathNode startNode = grid.GetGridObject(startX, startY);
-        PathNode endNode = grid.GetGridObject(endX, endY);
-
+        Debug.Log("Terceiro FindPath PathNodes: start > " + startNode + " end > " + endNode);
         if (startNode == null || endNode == null)
         {
+            Debug.Log("Caminho invalido");
             // Invalid Path
             return null;
         }
@@ -59,23 +80,21 @@ public class Pathfinding
         openList = new List<PathNode> { startNode };
         closedList = new List<PathNode>();
 
-        for (int x = 0; x < grid.GetWidth(); x++)
-        {
-            for (int y = 0; y < grid.GetHeight(); y++)
-            {
-                PathNode pathNode = grid.GetGridObject(x, y);
-                pathNode.gCost = 99999999;
-                pathNode.CalculateFCost();
-                pathNode.cameFromNode = null;
-            }
-        }
+        // for (int x = 0; x < grid.GetWidth(); x++)
+        // {
+        //     for (int y = 0; y < grid.GetHeight(); y++)
+        //     {
+        //         PathNode pathNode = grid.GetGridObject(x, y); // get no atual
+        //         pathNode.gCost = 99999999;
+        //         pathNode.CalculateFCost();
+        //         pathNode.cameFromNode = null;
+        //     }
+        // }
 
         startNode.gCost = 0;
         startNode.hCost = CalculateDistanceCost(startNode, endNode);
+        Debug.Log("hCost: " + startNode.hCost);
         startNode.CalculateFCost();
-
-        PathfindingDebugStepVisual.Instance.ClearSnapshots();
-        PathfindingDebugStepVisual.Instance.TakeSnapshot(grid, startNode, openList, closedList);
 
         while (openList.Count > 0)
         {
@@ -83,18 +102,18 @@ public class Pathfinding
             if (currentNode == endNode)
             {
                 // Reached final node
-                PathfindingDebugStepVisual.Instance.TakeSnapshot(grid, currentNode, openList, closedList);
-                PathfindingDebugStepVisual.Instance.TakeSnapshotFinalPath(grid, CalculatePath(endNode));
+                Debug.Log("The end: " + endNode);
                 return CalculatePath(endNode);
             }
 
             openList.Remove(currentNode);
             closedList.Add(currentNode);
+            Debug.Log("Neighbors de " + currentNode + ": " + GetNeighbourList(currentNode).Count);
 
             foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
             {
                 if (closedList.Contains(neighbourNode)) continue;
-                if (!neighbourNode.isWalkable)
+                if (!neighbourNode.bgTile.IsWalkable)
                 {
                     closedList.Add(neighbourNode);
                     continue;
@@ -113,7 +132,6 @@ public class Pathfinding
                         openList.Add(neighbourNode);
                     }
                 }
-                PathfindingDebugStepVisual.Instance.TakeSnapshot(grid, currentNode, openList, closedList);
             }
         }
 
@@ -124,42 +142,31 @@ public class Pathfinding
     private List<PathNode> GetNeighbourList(PathNode currentNode)
     {
         List<PathNode> neighbourList = new List<PathNode>();
+        IEnumerable<Position> neighbors;
 
-        if (currentNode.x - 1 >= 0)
+        if (walkables.Contains(currentNode.bgTile.Position))
         {
-            // Left
-            neighbourList.Add(GetNode(currentNode.x - 1, currentNode.y));
-            // Left Down
-            if (currentNode.y - 1 >= 0) neighbourList.Add(GetNode(currentNode.x - 1, currentNode.y - 1));
-            // Left Up
-            if (currentNode.y + 1 < grid.GetHeight()) neighbourList.Add(GetNode(currentNode.x - 1, currentNode.y + 1));
+            neighbors = graph.WalkableNeighbors(currentNode.bgTile.Position);
+
+            foreach (var n in neighbors)
+            {
+                if (graph.GetMeta(n).IsWalkable)
+                {
+                    neighbourList.Add(new PathNode(graph.GetMeta(n)));
+                }
+            }
         }
-        if (currentNode.x + 1 < grid.GetWidth())
-        {
-            // Right
-            neighbourList.Add(GetNode(currentNode.x + 1, currentNode.y));
-            // Right Down
-            if (currentNode.y - 1 >= 0) neighbourList.Add(GetNode(currentNode.x + 1, currentNode.y - 1));
-            // Right Up
-            if (currentNode.y + 1 < grid.GetHeight()) neighbourList.Add(GetNode(currentNode.x + 1, currentNode.y + 1));
-        }
-        // Down
-        if (currentNode.y - 1 >= 0) neighbourList.Add(GetNode(currentNode.x, currentNode.y - 1));
-        // Up
-        if (currentNode.y + 1 < grid.GetHeight()) neighbourList.Add(GetNode(currentNode.x, currentNode.y + 1));
 
         return neighbourList;
     }
 
-    public PathNode GetNode(int x, int y)
-    {
-        return grid.GetGridObject(x, y);
-    }
-
     private List<PathNode> CalculatePath(PathNode endNode)
     {
-        List<PathNode> path = new List<PathNode>();
-        path.Add(endNode);
+        Debug.Log("Entrou");
+        List<PathNode> path = new List<PathNode>
+        {
+            endNode
+        };
         PathNode currentNode = endNode;
         while (currentNode.cameFromNode != null)
         {
@@ -167,6 +174,7 @@ public class Pathfinding
             currentNode = currentNode.cameFromNode;
         }
         path.Reverse();
+        Debug.Log(path);
         return path;
     }
 
@@ -175,7 +183,7 @@ public class Pathfinding
         int xDistance = Mathf.Abs(a.x - b.x);
         int yDistance = Mathf.Abs(a.y - b.y);
         int remaining = Mathf.Abs(xDistance - yDistance);
-        return MOVE_DIAGONAL_COST * Mathf.Min(xDistance, yDistance) + MOVE_STRAIGHT_COST * remaining;
+        return Mathf.Min(xDistance, yDistance) + MOVE_STRAIGHT_COST * remaining;
     }
 
     private PathNode GetLowestFCostNode(List<PathNode> pathNodeList)

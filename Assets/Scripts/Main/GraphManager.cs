@@ -31,12 +31,13 @@ public class GraphManager : MonoBehaviour
 
         foreach (var tile in graph.AllMeta()) tilemap.Paint(tile);
 
-        AddEntity(turret, new Position(x: 7, y: 15));
-        AddEntity(turret, new Position(x: 7, y: 12));
-        AddEntity(turret, new Position(x: 11, y: 13));
-        AddEntity(enemyCastle, new Position(x: 12, y: 14));
+        AddEntity(turret, new Position(x: 13, y: 23));
+        AddEntity(turret, new Position(x: 24, y: 26));
+        AddEntity(turret, new Position(x: 13, y: 28));
+        AddEntity(enemyCastle, new Position(x: 28, y: 23));
+
         // AddEntity(wall, new Position(x: 10, y: 14));
-        enemyCastle.SpawnEnemies(new Position(x: 12, y: 14));
+        enemyCastle.SpawnEnemies(new Position(x: 28, y: 23));
     }
 
     /// <summary>

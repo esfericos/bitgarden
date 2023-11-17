@@ -19,8 +19,6 @@ public class Turret : Entity, IDamageable
     [SerializeField] private int Hitpoints;
     [SerializeField] private int MaxHitpoints = 5;
 
-    Position position;
-
     private Transform _target;
     private float _timeUntilFire;
 
@@ -100,9 +98,6 @@ public class Turret : Entity, IDamageable
 
         if (Hitpoints <= 0)
         {
-            position = new Position(x: (ushort)(gameObject.transform.position.x - 1), y: (ushort)(gameObject.transform.position.y - 1));
-            Graph grafo = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
-            grafo.entities = grafo.entities.Where(entity => entity != position.ToId()).ToArray();
             Destroy(gameObject);
         }
     }

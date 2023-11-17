@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class Graph : MonoBehaviour
 {
-    private bool _initialized = false;
+    public bool _initialized = false;
 
     private readonly Dictionary<Position, Directions> _topology = new();
     private readonly Dictionary<Position, BgTile> _meta = new();
@@ -76,10 +76,8 @@ public class Graph : MonoBehaviour
     /// </summary>
     public bool IsAvailableToBuild(Position pos)
     {
-        var tileKind = _meta[pos].Kind;
-        return (tileKind == BgTileKind.Grass
-            || tileKind == BgTileKind.Gbt)
-            && _meta[pos].Entity == null;
+        var tile = _meta[pos];
+        return tile.IsWalkable && _meta[pos].Entity == null;
     }
 
     /// <summary>
@@ -209,6 +207,8 @@ public readonly struct Position
     {
         var x = (uint)X << 16;
         return x | Y;
+        // var y = (uint)Y << 16;
+        // return X | y;
     }
 
     public static Position FromId(uint id)
@@ -337,11 +337,26 @@ public class BgTile
 
     public Entity Entity { get; set; }
 
+    public bool IsWalkable { get; set; }
+    public int Weight { get; set; }
+
     public BgTile(BgTileKind kind, Position position)
     {
         Kind = kind;
         Position = position;
         Entity = null;
+        if (kind == BgTileKind.Grass || kind == BgTileKind.Road1 || kind == BgTileKind.Road2
+        || kind == BgTileKind.Road3 || kind == BgTileKind.Road4 || kind == BgTileKind.Road5
+        || kind == BgTileKind.Road6 || kind == BgTileKind.Road7 || kind == BgTileKind.Road8
+        || kind == BgTileKind.Road9 || kind == BgTileKind.Road10)
+        {
+            IsWalkable = true;
+        }
+        else
+        {
+            IsWalkable = false;
+        }
+        Weight = 1;
     }
 
     public override string ToString()
