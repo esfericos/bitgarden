@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Vector3 target;
     private int pathIndex = 0;
-    private PathFinding pathFinding;
+    // private PathFinding pathFinding;
 
     // private void Start()
     // {
@@ -47,20 +47,20 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        pathFinding = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<PathFinding>();
-        LevelManager.main.path = pathFinding
-            .FindPath(new Position(
-                x: (ushort)(gameObject.transform.position.x - 1),
-                y: (ushort)(gameObject.transform.position.y - 1)))
-            .ToArray();
-        Debug.Log("CAMINHO RECEBIDO: " + LevelManager.main.path.ToString());
+        // pathFinding = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<PathFinding>();
+        // LevelManager.main.path = pathFinding
+        //     .FindPath(new Position(
+        //         x: (ushort)(gameObject.transform.position.x - 1),
+        //         y: (ushort)(gameObject.transform.position.y - 1)))
+        //     .ToArray();
+        // Debug.Log("CAMINHO RECEBIDO: " + LevelManager.main.path.ToString());
 
-        // LevelManager.main.path = new List<Vector3>() {
-        //         new Vector3(13, 14),
-        //         new Vector3(11, 13),
-        //         new Vector3(8, 14),
-        //         new Vector3(7, 15)
-        //     }.ToArray();
+        LevelManager.main.path = new List<Vector3>() {
+                new Vector3(13, 14),
+                new Vector3(11, 13),
+                new Vector3(8, 14),
+                new Vector3(7, 15)
+            }.ToArray();
 
 
 
