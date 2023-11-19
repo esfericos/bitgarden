@@ -22,8 +22,8 @@ public class PathNode
     public int fCost { get; set; }
     public PathNode cameFromNode;
     public BgTile bgTile;
-    public int x;
-    public int y;
+    public ushort x;
+    public ushort y;
 
     public PathNode(BgTile bgTile)
     {
@@ -34,7 +34,7 @@ public class PathNode
 
     public void CalculateFCost()
     {
-        fCost = gCost + hCost; // g = 9999999, h = 
+        fCost = gCost + hCost;
     }
 
     public void SetIsWalkable(bool isWalkable)

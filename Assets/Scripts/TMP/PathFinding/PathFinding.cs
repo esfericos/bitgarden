@@ -33,24 +33,25 @@ public class PathFinding : MonoBehaviour
 
     public List<Vector3> FindPath(Position start)
     {
-        Position end = new(x: 16, y: 24);
+        // Position end = new(x: 16, y: 24);
+        Position end = new(x: 24, y: 26);
         // achar posicao de entidade mais proxima
-        /*
-        {
-            new Vector3(13, 14),
-            new Vector3(11, 13),
-            new Vector3(8, 14),
-            new Vector3(7, 15)
-        }
-        */
+        // return new List<Vector3>
+        // {
+        //     new Vector3(27, 23),
+        //     new Vector3(27, 24),
+        //     new Vector3(26, 25),
+        //     new Vector3(25, 25),
+        // };
+               
         // return new List<Vector3> { new Vector3(start.X, start.Y), new Vector3(end.X, end.Y), };
         return FindPath(start, end);
     }
 
     public List<Vector3> FindPath(Position start, Position end)
     {
-        List<PathNode> path = FindPath(new PathNode(graph.GetMeta(start)), new PathNode(graph.GetMeta(end)));
-        Debug.Log("Caminho ENCONTRADO: " + (path == null ? "null" : path.ToString()));
+        
+        List<PathNode> path = FindPath(graph.walkables[start], graph.walkables[end]);
         if (path == null)
         {
             return null;
@@ -58,7 +59,6 @@ public class PathFinding : MonoBehaviour
         else
         {
             List<Vector3> vectorPath = new List<Vector3>();
-            Debug.Log("Tamanho caminho: " + vectorPath.Count);
             foreach (PathNode pathNode in path)
             {
                 vectorPath.Add(new Vector3(pathNode.x, pathNode.y));
@@ -69,7 +69,6 @@ public class PathFinding : MonoBehaviour
 
     public List<PathNode> FindPath(PathNode startNode, PathNode endNode)
     {
-        Debug.Log("Terceiro FindPath PathNodes: start > " + startNode + " end > " + endNode);
         if (startNode == null || endNode == null)
         {
             Debug.Log("Caminho invalido");
@@ -79,21 +78,16 @@ public class PathFinding : MonoBehaviour
 
         openList = new List<PathNode> { startNode };
         closedList = new List<PathNode>();
-
-        // for (int x = 0; x < grid.GetWidth(); x++)
-        // {
-        //     for (int y = 0; y < grid.GetHeight(); y++)
-        //     {
-        //         PathNode pathNode = grid.GetGridObject(x, y); // get no atual
-        //         pathNode.gCost = 99999999;
-        //         pathNode.CalculateFCost();
-        //         pathNode.cameFromNode = null;
-        //     }
-        // }
+        
+        foreach(var walkable in graph.walkables){
+				
+            walkable.Value.gCost = 99999999;
+            walkable.Value.CalculateFCost();
+            walkable.Value.cameFromNode = null;
+        }
 
         startNode.gCost = 0;
         startNode.hCost = CalculateDistanceCost(startNode, endNode);
-        Debug.Log("hCost: " + startNode.hCost);
         startNode.CalculateFCost();
 
         while (openList.Count > 0)
@@ -102,17 +96,18 @@ public class PathFinding : MonoBehaviour
             if (currentNode == endNode)
             {
                 // Reached final node
-                Debug.Log("The end: " + endNode);
                 return CalculatePath(endNode);
             }
 
             openList.Remove(currentNode);
             closedList.Add(currentNode);
-            Debug.Log("Neighbors de " + currentNode + ": " + GetNeighbourList(currentNode).Count);
+            // Debug.Log("Neighbors de " + currentNode + ": " + GetNeighbourList(currentNode).Count);
 
             foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
             {
+                // Debug.Log(neighbourNode.x + " " + neighbourNode.y);
                 if (closedList.Contains(neighbourNode)) continue;
+                // Debug.Log(closedList.Contains(neighbourNode));
                 if (!neighbourNode.bgTile.IsWalkable)
                 {
                     closedList.Add(neighbourNode);
@@ -144,7 +139,7 @@ public class PathFinding : MonoBehaviour
         List<PathNode> neighbourList = new List<PathNode>();
         IEnumerable<Position> neighbors;
 
-        if (walkables.Contains(currentNode.bgTile.Position))
+        if (graph.walkables.ContainsKey(currentNode.bgTile.Position))
         {
             neighbors = graph.WalkableNeighbors(currentNode.bgTile.Position);
 
@@ -152,7 +147,7 @@ public class PathFinding : MonoBehaviour
             {
                 if (graph.GetMeta(n).IsWalkable)
                 {
-                    neighbourList.Add(new PathNode(graph.GetMeta(n)));
+                    neighbourList.Add(graph.walkables[n]);
                 }
             }
         }
@@ -162,7 +157,6 @@ public class PathFinding : MonoBehaviour
 
     private List<PathNode> CalculatePath(PathNode endNode)
     {
-        Debug.Log("Entrou");
         List<PathNode> path = new List<PathNode>
         {
             endNode
@@ -174,11 +168,10 @@ public class PathFinding : MonoBehaviour
             currentNode = currentNode.cameFromNode;
         }
         path.Reverse();
-        Debug.Log(path);
         return path;
     }
 
-    private int CalculateDistanceCost(PathNode a, PathNode b)
+    public int CalculateDistanceCost(PathNode a, PathNode b)
     {
         int xDistance = Mathf.Abs(a.x - b.x);
         int yDistance = Mathf.Abs(a.y - b.y);

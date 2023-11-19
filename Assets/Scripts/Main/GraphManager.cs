@@ -15,6 +15,7 @@ public class GraphManager : MonoBehaviour
     public EnemyCastle enemyCastle;
     public GameObject wall;
     public GameObject tower;
+    
 
     public TextAsset jsonFile;
     // Start is called before the first frame update
@@ -30,6 +31,8 @@ public class GraphManager : MonoBehaviour
         graph.Initialize(rawWorld.Topology, rawWorld.Meta);
 
         foreach (var tile in graph.AllMeta()) tilemap.Paint(tile);
+
+        // portalPosition = new Position(x: 28, y: 23);
 
         AddEntity(turret, new Position(x: 13, y: 23));
         AddEntity(turret, new Position(x: 24, y: 26));

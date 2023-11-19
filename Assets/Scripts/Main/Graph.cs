@@ -13,6 +13,8 @@ public class Graph : MonoBehaviour
 
     private readonly Dictionary<Position, Directions> _topology = new();
     private readonly Dictionary<Position, BgTile> _meta = new();
+    public Dictionary<Position, PathNode> walkables = new();
+    public Position portalPosition;
 
     public uint[] entities;
 
@@ -38,6 +40,15 @@ public class Graph : MonoBehaviour
             var kind = BgTileKindUtils.FromString(rm.Type);
             _meta.Add(pos, new BgTile(kind, pos));
         }
+        
+        IEnumerable<Position> topology = this.WalkableNodes();
+        foreach (Position p in topology)
+        {
+            if (this.GetMeta(p).IsWalkable)
+            {
+                walkables[p] = new PathNode(this.GetMeta(p));
+            }
+        }
 
         entities = new uint[0];
     }
@@ -49,6 +60,10 @@ public class Graph : MonoBehaviour
     {
         _meta[pos].Entity = entity;
         if (entity.GetType() != typeof(EnemyCastle)) entities = entities.Append(pos.ToId()).ToArray();
+        else
+        {
+            portalPosition = pos;
+        }
     }
 
     /// <summary>
