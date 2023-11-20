@@ -1,5 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
+// Trem q tem q fazer ainda
+// Nao iniciar a fase de uma vez, colocar tipo um botao de play
+// Habilitar o sistema de comprar antes de comecar a partida para poder colocar as estruturas
+// Deixar habilitado todas as funcaoes para gerar as estruturas 
+// Gerar a posicao do portal e o core de forma randomica
+// funcao para pegar a entidade mais proxima 
 public class EnemyMovement : MonoBehaviour
 {
     [Header("References")]
@@ -11,10 +18,16 @@ public class EnemyMovement : MonoBehaviour
 
     private Vector3 target;
     private int pathIndex = 0;
+    private PathFinding pathFinding;
+    private float randomMovement;
+    private Graph graph;
+    private int quantityEntities;
+    private Position endPosition;
+    public Vector3[] path;
 
     // private void Start()
     // {
-    //     target = LevelManager.main.path[pathIndex];
+    //     target = path[pathIndex];
     // }
 
     // private void Update()
@@ -23,14 +36,14 @@ public class EnemyMovement : MonoBehaviour
     //     {
     //         pathIndex++;
 
-    //         if (pathIndex == LevelManager.main.path.Length)
+    //         if (pathIndex == path.Length)
     //         {
     //             pathIndex = 0;
     //             return;
     //         }
     //         else
     //         {
-    //             target = LevelManager.main.path[pathIndex];
+    //             target = path[pathIndex];
     //         }
     //     }
     // }
@@ -45,43 +58,80 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        LevelManager.main.path = new Vector3[]
-        {
-            new Vector3(13, 14),
-            new Vector3(11, 13),
-            new Vector3(8, 14),
-            new Vector3(7, 15)
-        };
+        pathFinding = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<PathFinding>();
+        graph = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
+        quantityEntities = graph.entities.Length;
+        Position current = new Position(
+            x: (ushort)(gameObject.transform.position.x - 1),
+            y: (ushort)(gameObject.transform.position.y - 1));
+        Position end = getClosestEntity(current);
+        path = pathFinding.FindPath(current, end).ToArray();
+
+        randomMovement = Random.Range(0.3f, 0.7f);
         pathIndex = 0;
-        target = LevelManager.main.path[pathIndex];
+        target = path[pathIndex];
     }
 
     void Update()
     {
-        if (LevelManager.main.path.Length <= pathIndex) { }
+        if (path.Length <= pathIndex) { }
         else if (Vector3.Distance(target, transform.position) < distance)
         {
             pathIndex++;
             if (pathIndex < 0)
                 pathIndex = 0;
 
-            target = LevelManager.main.path[pathIndex % LevelManager.main.path.Length]
-                    + new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f));
+            target = path[pathIndex % path.Length] + new Vector3(randomMovement, randomMovement);
         }
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
         }
+
+        if (quantityEntities != graph.entities.Length)
+        {
+            if (graph.entities.Length != 0)
+            {
+                quantityEntities = graph.entities.Length;
+                Position start = new Position(
+                    x: (ushort)(gameObject.transform.position.x),
+                    y: (ushort)(gameObject.transform.position.y));
+                Position end = getClosestEntity(start);
+                path = pathFinding.FindPath(start, end)
+                    .ToArray();
+                // randomMovement = Random.Range(0.3f, 0.7f);
+                pathIndex = 0;
+                target = path[pathIndex];
+            }
+        }
     }
 
     private void OnDrawGizmos()
     {
-        if (LevelManager.main.path != null)
+        if (path != null)
         {
-            foreach (Vector3 waypoint in LevelManager.main.path)
+            foreach (Vector3 waypoint in path)
             {
                 Gizmos.DrawSphere(waypoint, 0.1f);
             }
         }
+    }
+    // Calcular a distancia do no inicial para todas as entidades depois retornar a menor
+    private Position getClosestEntity(Position start)
+    {
+        int closest = 9999999;
+        Position end = new();
+        foreach (var pos in graph.entities)
+        {
+            int distance =
+                pathFinding.CalculateDistanceCost(graph.walkables[start], graph.walkables[Position.FromId(pos)]);
+            if (closest > distance)
+            {
+                closest = distance;
+                end = Position.FromId(pos);
+            }
+        }
+
+        return end;
     }
 }

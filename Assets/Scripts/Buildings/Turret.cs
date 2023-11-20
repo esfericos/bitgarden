@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using Interfaces;
+using System.Linq;
 
 public class Turret : Entity, IDamageable
 {
@@ -24,7 +25,7 @@ public class Turret : Entity, IDamageable
     public override Price Price { get; set; }
     public override void Start()
     {
-        Price = new Price(gold: 25);
+        Price = new Price(gold: 0);
         Hitpoints = MaxHitpoints;
         HealthBar.SetHealth(Hitpoints, MaxHitpoints);
 
@@ -88,9 +89,9 @@ public class Turret : Entity, IDamageable
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, Vector3.forward, range);
     }
-    
+
     public void TakeDamage(int damage)
-    {   
+    {
 
         Hitpoints -= damage;
         HealthBar.SetHealth(Hitpoints, MaxHitpoints);
