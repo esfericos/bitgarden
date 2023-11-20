@@ -34,6 +34,7 @@ public class MapPainter : MonoBehaviour
     public Tile road9;
     public Tile road10;
     public Tile snow;
+    public Tile snoweffecta;
     public Tile sbt;
     public Tile sbb;
     public Tile sbl;
@@ -90,7 +91,7 @@ public class MapPainter : MonoBehaviour
             BgTileKind.Sbr => sbr,
             BgTileKind.Sblb => sblb,
             BgTileKind.Sbrt => sbrt,
-            BgTileKind.Snow => snow,
+            BgTileKind.Snow => GetSnowType(),
             BgTileKind.Sbilt => sbilt,
             BgTileKind.Sbirt => sbirt,
             BgTileKind.Sbilb => sbilb,
@@ -117,9 +118,22 @@ public class MapPainter : MonoBehaviour
         {
             return grass;
         }
-
-
 }
+
+
+    private Tile GetSnowType()
+    {
+        float randomNumber = Random.Range(0, 12);
+        if (randomNumber == 1)
+        {
+            return snoweffecta;
+        }
+        else
+        {
+            return snow;
+        }
+    }
+
     /// <summary>
     /// Renders Entity in the map.
     /// </summary>

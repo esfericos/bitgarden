@@ -4945,6 +4945,7 @@ MonoBehaviour:
   road9: {fileID: 11400000, guid: 84fd338e9eea95440ba17a5bc483e2f5, type: 2}
   road10: {fileID: 11400000, guid: a2aa7267a4bac1a46a07738ae2e42d20, type: 2}
   snow: {fileID: 11400000, guid: ee571d7672944b4448501befd0ab1b7c, type: 2}
+  snoweffecta: {fileID: 11400000, guid: db3e0d0493e7360429bf7e8641abd387, type: 2}
   sbt: {fileID: 11400000, guid: 7e431a5a94d017e4fb4d4013e42d2bbb, type: 2}
   sbb: {fileID: 11400000, guid: 151eeb4f09f50bc45b6a54ad237b48c3, type: 2}
   sbl: {fileID: 11400000, guid: bd7f2619bd9e4e749890f99e80f323a3, type: 2}
