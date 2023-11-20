@@ -1728,7 +1728,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1333784525}
   m_Direction: 2
   m_Value: 1.0000023
-  m_Size: 0.6019138
+  m_Size: 0.60191387
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4412,7 +4412,7 @@ MonoBehaviour:
   enemyCastle: {fileID: 5585164346093358949, guid: 9115145dad31df749a8ce4b02d35e49b, type: 3}
   wall: {fileID: 8716738003659168067, guid: 312ff0eaa26dd5f45986d709b0006638, type: 3}
   tower: {fileID: 914189471983534127, guid: fca82d03caeee8c4f8aef01fcde79e0e, type: 3}
-  jsonFile: {fileID: 4900000, guid: 9054e8dc6a35010408ffe5be4cff98b2, type: 3}
+  jsonFile: {fileID: 4900000, guid: 8a4da6db886b36948a559d30ca0edf15, type: 3}
 --- !u!4 &1557151289
 Transform:
   m_ObjectHideFlags: 0
@@ -4944,6 +4944,24 @@ MonoBehaviour:
   road8: {fileID: 11400000, guid: 55225fe9e1979e7419ba88aa890cf52d, type: 2}
   road9: {fileID: 11400000, guid: 84fd338e9eea95440ba17a5bc483e2f5, type: 2}
   road10: {fileID: 11400000, guid: a2aa7267a4bac1a46a07738ae2e42d20, type: 2}
+  snow: {fileID: 11400000, guid: ee571d7672944b4448501befd0ab1b7c, type: 2}
+  snoweffecta: {fileID: 11400000, guid: db3e0d0493e7360429bf7e8641abd387, type: 2}
+  sbt: {fileID: 11400000, guid: 7e431a5a94d017e4fb4d4013e42d2bbb, type: 2}
+  sbb: {fileID: 11400000, guid: 151eeb4f09f50bc45b6a54ad237b48c3, type: 2}
+  sbl: {fileID: 11400000, guid: bd7f2619bd9e4e749890f99e80f323a3, type: 2}
+  sblb: {fileID: 11400000, guid: 277898df73de0914697a9a97fa72eb12, type: 2}
+  sblt: {fileID: 11400000, guid: ffeb7c182c2d3cd4e86f1d99adb60972, type: 2}
+  sbr: {fileID: 11400000, guid: f5f65bdf827e57f4cb07307223cf6df9, type: 2}
+  sbrb: {fileID: 11400000, guid: f2e824c782ea525499bd1092cbebd091, type: 2}
+  sbrt: {fileID: 11400000, guid: 6445a579f1517224a9b9c0357b6d5848, type: 2}
+  sbilt: {fileID: 11400000, guid: 1324773f4fae58b4e88c7c73633f556a, type: 2}
+  sbirt: {fileID: 11400000, guid: 78145caf0817b334cbc1337b4e587269, type: 2}
+  sbilb: {fileID: 11400000, guid: a29c3510bd566f144a5a7cc353331840, type: 2}
+  sbirb: {fileID: 11400000, guid: 4ddf3d5537f431f439c0ebf739bbb7b6, type: 2}
+  tree: {fileID: 11400000, guid: 7737ae553f27ef044be7093208723062, type: 2}
+  tree2: {fileID: 11400000, guid: e188a8b75805b9944b98d7a48573e8fb, type: 2}
+  tree3: {fileID: 11400000, guid: 9a72cdee9ef7ec443ba13c67201aa14a, type: 2}
+  tree4: {fileID: 11400000, guid: 2f6e258783be8ae4aad09a23e3e0f15a, type: 2}
 --- !u!4 &2137589841
 Transform:
   m_ObjectHideFlags: 0
