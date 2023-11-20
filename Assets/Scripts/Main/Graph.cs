@@ -272,7 +272,24 @@ public enum BgTileKind
     Road7,
     Road8,
     Road9,
-    Road10
+    Road10,
+    Snow,
+    Sbt,
+    Sbb,
+    Sbl,
+    Sblb,
+    Sblt,
+    Sbr,
+    Sbrb,
+    Sbrt,
+    Sbilt,
+    Sbirt,
+    Sbilb,
+    Sbirb,
+    Tree,
+    Tree2,
+    Tree3,
+    Tree4
 }
 
 // Sorry.
@@ -306,6 +323,23 @@ static class BgTileKindUtils
             "road8" => BgTileKind.Road8,
             "road9" => BgTileKind.Road9,
             "road10" => BgTileKind.Road10,
+            "snow" => BgTileKind.Snow,
+            "sbt" => BgTileKind.Sbt,
+            "sbb" => BgTileKind.Sbb,
+            "sbl" => BgTileKind.Sbl,
+            "sblb" => BgTileKind.Sblb,
+            "sblt" => BgTileKind.Sblt,
+            "sbr" => BgTileKind.Sbr,
+            "sbrb" => BgTileKind.Sbrb,
+            "sbrt" => BgTileKind.Sbrt,
+            "sbilt" => BgTileKind.Sbilt,
+            "sbirt" => BgTileKind.Sbirt,
+            "sbilb" => BgTileKind.Sbilb,
+            "sbirb" => BgTileKind.Sbirb,
+            "tree" => BgTileKind.Tree,
+            "tree2" => BgTileKind.Tree2,
+            "tree3" => BgTileKind.Tree3,
+            "tree4" => BgTileKind.Tree4,
             _ => throw new DataException("Invalid string to BgTileKind conversion"),
         };
     }
@@ -338,6 +372,23 @@ static class BgTileKindUtils
             BgTileKind.Road8 => "road8",
             BgTileKind.Road9 => "road9",
             BgTileKind.Road10 => "road10",
+            BgTileKind.Snow => "snow",
+            BgTileKind.Sbt => "sbt",
+            BgTileKind.Sbb => "sbb",
+            BgTileKind.Sbl => "sbl",
+            BgTileKind.Sblb => "sblb",
+            BgTileKind.Sblt => "sblt",
+            BgTileKind.Sbr => "sbr",
+            BgTileKind.Sbrb => "sbrb",
+            BgTileKind.Sbrt => "sbrt",
+            BgTileKind.Sbilt => "sbilt",
+            BgTileKind.Sbirt => "sbirt",
+            BgTileKind.Sbilb => "sbilb",
+            BgTileKind.Sbirb => "sbirb",
+            BgTileKind.Tree => "tree",
+            BgTileKind.Tree2 => "tree2",
+            BgTileKind.Tree3 => "tree3",
+            BgTileKind.Tree4 => "tree4",
             _ => throw new DataException("unknown BgTileKind"),
         };
     }
@@ -363,7 +414,7 @@ public class BgTile
         if (kind == BgTileKind.Grass || kind == BgTileKind.Road1 || kind == BgTileKind.Road2
         || kind == BgTileKind.Road3 || kind == BgTileKind.Road4 || kind == BgTileKind.Road5
         || kind == BgTileKind.Road6 || kind == BgTileKind.Road7 || kind == BgTileKind.Road8
-        || kind == BgTileKind.Road9 || kind == BgTileKind.Road10)
+        || kind == BgTileKind.Road9 || kind == BgTileKind.Road10 || kind == BgTileKind.Snow)
         {
             IsWalkable = true;
         }

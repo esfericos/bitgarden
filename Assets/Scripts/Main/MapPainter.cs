@@ -33,6 +33,24 @@ public class MapPainter : MonoBehaviour
     public Tile road8;
     public Tile road9;
     public Tile road10;
+    public Tile snow;
+    public Tile sbt;
+    public Tile sbb;
+    public Tile sbl;
+    public Tile sblb;
+    public Tile sblt;
+    public Tile sbr;
+    public Tile sbrb;
+    public Tile sbrt;
+    public Tile sbilt;
+    public Tile sbirt;
+    public Tile sbilb;
+    public Tile sbirb;
+    public Tile tree;
+    public Tile tree2;
+    public Tile tree3;
+    public Tile tree4;
+
 
     public void Paint(BgTile tile)
     {
@@ -49,7 +67,7 @@ public class MapPainter : MonoBehaviour
             BgTileKind.Gbr => gbr,
             BgTileKind.Gblb => gblb,
             BgTileKind.Gbrt => gbrt,
-            BgTileKind.Grass => GetGrassTipe(),
+            BgTileKind.Grass => GetGrassType(),
             BgTileKind.Gbilt => gbilt,
             BgTileKind.Gbirt => gbirt,
             BgTileKind.Gbilb => gbilb,
@@ -64,6 +82,23 @@ public class MapPainter : MonoBehaviour
             BgTileKind.Road8 => road8,
             BgTileKind.Road9 => road9,
             BgTileKind.Road10 => road10,
+            BgTileKind.Sbt => sbt,
+            BgTileKind.Sbb => sbb,
+            BgTileKind.Sbl => sbl,
+            BgTileKind.Sbrb => sbrb,
+            BgTileKind.Sblt => sblt,
+            BgTileKind.Sbr => sbr,
+            BgTileKind.Sblb => sblb,
+            BgTileKind.Sbrt => sbrt,
+            BgTileKind.Snow => snow,
+            BgTileKind.Sbilt => sbilt,
+            BgTileKind.Sbirt => sbirt,
+            BgTileKind.Sbilb => sbilb,
+            BgTileKind.Sbirb => sbirb,
+            BgTileKind.Tree => tree,
+            BgTileKind.Tree2 => tree2,
+            BgTileKind.Tree3 => tree3,
+            BgTileKind.Tree4 => tree4,
             // Unreachable since the `None` case was already early handled above.
             BgTileKind.None => throw new Exception("Unreachable"),
             _ => throw new DataException("Unhandled BgTileKind in MapPainter")
@@ -72,7 +107,7 @@ public class MapPainter : MonoBehaviour
     }
 
 
-    private Tile GetGrassTipe()
+    private Tile GetGrassType()
 {
         float randomNumber = Random.Range(0, 10);
         if(randomNumber == 1 )
