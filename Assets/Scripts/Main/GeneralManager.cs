@@ -14,14 +14,29 @@ public class GeneralManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void Pause()
+    public void PauseMenu()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
     }
-    public void Resume()
+    public void ResumeMenu()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+    }
+    
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+    
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+    }
+    
+    public void ControlTime(float time)
+    {
+        Time.timeScale = time;
     }
 }

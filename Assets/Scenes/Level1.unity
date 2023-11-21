@@ -418,8 +418,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 227800721}
-        m_TargetAssemblyTypeName: GeneralManager, Assembly-CSharp
-        m_MethodName: Pause
+        m_TargetAssemblyTypeName: GeneralManager, ScriptsAssembly
+        m_MethodName: PauseMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1612,8 +1612,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 1879474348, guid: 057e0f554623db540b89c3065665fadd, type: 3}
-    m_SelectedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 1879474348, guid: 057e0f554623db540b89c3065665fadd, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1625,7 +1625,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 468092718}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1121441495}
+        m_TargetAssemblyTypeName: GeneralManager, ScriptsAssembly
+        m_MethodName: ControlTime
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 4
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &468092718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3137,8 +3149,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: -18748879, guid: 057e0f554623db540b89c3065665fadd, type: 3}
-    m_SelectedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: -18748879, guid: 057e0f554623db540b89c3065665fadd, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -3150,7 +3162,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 644124220}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1121441495}
+        m_TargetAssemblyTypeName: GeneralManager, ScriptsAssembly
+        m_MethodName: ControlTime
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &644124220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4027,8 +4051,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 931357249, guid: 057e0f554623db540b89c3065665fadd, type: 3}
-    m_SelectedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 931357249, guid: 057e0f554623db540b89c3065665fadd, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -4040,7 +4064,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 877736951}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1121441495}
+        m_TargetAssemblyTypeName: GeneralManager, ScriptsAssembly
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &877736951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4568,6 +4604,7 @@ GameObject:
   - component: {fileID: 1121441494}
   - component: {fileID: 1121441493}
   - component: {fileID: 1121441492}
+  - component: {fileID: 1121441495}
   m_Layer: 5
   m_Name: TimeControl
   m_TagString: Untagged
@@ -4664,6 +4701,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121441490}
   m_CullTransparentMesh: 1
+--- !u!114 &1121441495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121441490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14513707c62a4c04ea4c654f59af75d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 767723427}
 --- !u!1 &1133105941
 GameObject:
   m_ObjectHideFlags: 0
@@ -5525,8 +5575,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1313794116}
-        m_TargetAssemblyTypeName: GeneralManager, Assembly-CSharp
-        m_MethodName: Resume
+        m_TargetAssemblyTypeName: GeneralManager, ScriptsAssembly
+        m_MethodName: ResumeMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5688,8 +5738,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: -146777712, guid: 057e0f554623db540b89c3065665fadd, type: 3}
-    m_SelectedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: -146777712, guid: 057e0f554623db540b89c3065665fadd, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -5701,7 +5751,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1380172327}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1121441495}
+        m_TargetAssemblyTypeName: GeneralManager, ScriptsAssembly
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1380172327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7866,8 +7928,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: -528027442, guid: 057e0f554623db540b89c3065665fadd, type: 3}
-    m_SelectedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: -528027442, guid: 057e0f554623db540b89c3065665fadd, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -7879,7 +7941,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2108934299}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1121441495}
+        m_TargetAssemblyTypeName: GeneralManager, ScriptsAssembly
+        m_MethodName: ControlTime
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2108934299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7986,8 +8060,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: -203055540, guid: 057e0f554623db540b89c3065665fadd, type: 3}
-    m_SelectedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: -203055540, guid: 057e0f554623db540b89c3065665fadd, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -7999,7 +8073,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2133103700}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1121441495}
+        m_TargetAssemblyTypeName: GeneralManager, ScriptsAssembly
+        m_MethodName: ControlTime
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.25
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2133103700
 MonoBehaviour:
   m_ObjectHideFlags: 0
