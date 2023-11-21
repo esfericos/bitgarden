@@ -10,7 +10,7 @@ public class GraphManager : MonoBehaviour
     private Graph graph;
     private Store store;
     public Grid gridGamb;
-
+    private CameraMove camera;
     public Entity turret;
     public EnemyCastle enemyCastle;
     public GameObject wall;
@@ -24,14 +24,33 @@ public class GraphManager : MonoBehaviour
         tilemap = GameObject.FindGameObjectWithTag("MapPainterHandler").GetComponent<MapPainter>();
         graph = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
         store = GameObject.FindGameObjectWithTag("StoreHandler").GetComponent<Store>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMove>();
 
         string jsonString = jsonFile.ToString();
         RawWorld rawWorld = JsonConvert.DeserializeObject<RawWorld>(jsonString);
 
         graph.Initialize(rawWorld.Topology, rawWorld.Meta);
 
-        foreach (var tile in graph.AllMeta()) tilemap.Paint(tile);
 
+        // Define camera max range
+        int top = 0;
+        int bottom = 100;
+        int left = 100;
+        int right = 0;
+
+        foreach (var tile in graph.AllMeta())
+        {
+            tilemap.Paint(tile);
+            if (tile.Kind == BgTileKind.None) continue;
+            var pos = tile.Position;
+            if (pos.X > right) right = pos.X;
+            if (pos.X < left) left = pos.X;
+            if (pos.Y > top) top = pos.Y;
+            if (pos.Y < bottom) bottom = pos.Y;
+        }
+
+        // Set camera max range
+        camera.SetRange(top, bottom, right, left);
         // portalPosition = new Position(x: 28, y: 23);
 
         AddEntity(turret, new Position(x: 13, y: 23));
