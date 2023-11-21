@@ -24,4 +24,9 @@ public class GeneralManager : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
     }
+
+public void TimeControl(float value)
+    {
+        Time.timeScale = value;
+    }
 }
