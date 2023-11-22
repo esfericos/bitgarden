@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GeneralManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
+
     public void ChangeScene(string scene)
     {
         Time.timeScale = 1f;
@@ -25,7 +26,7 @@ public class GeneralManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-public void TimeControl(float value)
+    public void TimeControl(float value)
     {
         Time.timeScale = value;
     }
