@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Interfaces;
+using UnityEngine;
 using UnityEditor;
 
-public class Wall : Entity
+public class Wall : Entity, IDamageable
 {
     [Header("References")]
     [SerializeField] private HealthBarBehaviour HealthBar;
@@ -19,7 +20,7 @@ public class Wall : Entity
         HealthBar.SetHealth(Hitpoints, MaxHitpoints);   
     }
     
-    public void TakeHit(int damage)
+    public void TakeDamage(int damage)
     {   
         Price = new Price(gold: 1);
         Hitpoints -= damage;
