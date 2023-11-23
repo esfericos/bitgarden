@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Interpreter.Eval;
 using Interpreter.Eval.Type;
 using Main;
 using UnityEngine;
@@ -11,6 +12,12 @@ namespace Interpreter.Lib.Wall
         public Nil Exec(Number x, Number y)
         {
             //@TODO: check for resources
+            
+            Graph grafo = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
+            if (!grafo.IsAvailableToBuild(new Position((ushort)x.Value, (ushort)y.Value)))
+            {
+                throw new EvalException("Nao pode seu retardado");
+            }
 
             int type = 0;
             Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/wall_basic");

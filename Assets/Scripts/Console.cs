@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,12 +28,15 @@ public class Console : MonoBehaviour
         Debug.Log("[CMD] Received: >: " + commandInput.text);
 
         string interpreterResponse = "Ok!";
+        Debug.Log("antes do try");
         try
         {
+            Debug.Log("dentro do try");
             GodGame.Evaluator.ExecProgram(commandInput.text);
         }
-        catch (EvalException e)
+        catch (Exception e)
         {
+            Debug.Log("dentro do catch");
             interpreterResponse = e.Message;
         }
 

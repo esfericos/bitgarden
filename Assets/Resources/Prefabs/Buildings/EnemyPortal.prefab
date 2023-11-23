@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 150577983129915833, guid: e747e1380f24c5b4b9245520eeb716d6, type: 3}
-  enemyQty: 10
+  enemyQty: 30
   timeToStart: 0.1
   timeToRepeat: 0.3
 --- !u!82 &-1170888606888139968

@@ -22,6 +22,7 @@ public class EnemyMovement : MonoBehaviour
     private float randomMovement;
     private Graph graph;
     private int quantityEntities;
+    private int quantityWalls;
     private Position endPosition;
     public Vector3[] path;
 
@@ -61,6 +62,7 @@ public class EnemyMovement : MonoBehaviour
         pathFinding = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<PathFinding>();
         graph = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
         quantityEntities = graph.entities.Length;
+        quantityWalls = graph.walls.Length;
         Position current = new Position(
             x: (ushort)(gameObject.transform.position.x - 1),
             y: (ushort)(gameObject.transform.position.y - 1));
@@ -88,11 +90,12 @@ public class EnemyMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
         }
 
-        if (quantityEntities != graph.entities.Length)
+        if (quantityEntities != graph.entities.Length || quantityWalls != graph.walls.Length)
         {
             if (graph.entities.Length != 0)
             {
                 quantityEntities = graph.entities.Length;
+                quantityWalls = graph.walls.Length;
                 Position start = new Position(
                     x: (ushort)(gameObject.transform.position.x),
                     y: (ushort)(gameObject.transform.position.y));

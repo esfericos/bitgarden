@@ -1,6 +1,7 @@
 ﻿using Interfaces;
 using UnityEngine;
 using UnityEditor;
+using System.Linq;
 
 public class Wall : Entity, IDamageable
 {
@@ -27,7 +28,13 @@ public class Wall : Entity, IDamageable
         HealthBar.SetHealth(Hitpoints, MaxHitpoints);
 
         if (Hitpoints <= 0)
-        {
+        { 
+            Position position = new(
+                x: (ushort)(gameObject.transform.position.x),
+                y: (ushort)(gameObject.transform.position.y)
+            );
+            Graph grafo = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
+            grafo.walls = grafo.walls.Where(ent => ent != position.ToId()).ToArray();
             Destroy(gameObject);
         }
     }

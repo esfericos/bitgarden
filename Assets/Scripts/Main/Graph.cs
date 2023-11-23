@@ -12,8 +12,9 @@ public class Graph : MonoBehaviour
     public bool _initialized = false;
 
     private readonly Dictionary<Position, Directions> _topology = new();
-    private readonly Dictionary<Position, BgTile> _meta = new();
+    public readonly Dictionary<Position, BgTile> _meta = new();
     public Dictionary<Position, PathNode> walkables = new();
+    public uint[] walls;
     public Position portalPosition;
 
     public uint[] entities;
@@ -59,10 +60,10 @@ public class Graph : MonoBehaviour
     public void AddEntity(Entity entity, Position pos)
     {
         _meta[pos].Entity = entity;
-        if (entity.GetType() != typeof(EnemyCastle)) entities = entities.Append(pos.ToId()).ToArray();
-        else
+        if (entity.GetType() == typeof(Turret)) entities = entities.Append(pos.ToId()).ToArray();
+        else if (entity.GetType() == typeof(Wall))
         {
-            portalPosition = pos;
+            walls = walls.Append(pos.ToId()).ToArray();
         }
     }
 
@@ -414,7 +415,7 @@ public class BgTile
         if (kind == BgTileKind.Grass || kind == BgTileKind.Road1 || kind == BgTileKind.Road2
         || kind == BgTileKind.Road3 || kind == BgTileKind.Road4 || kind == BgTileKind.Road5
         || kind == BgTileKind.Road6 || kind == BgTileKind.Road7 || kind == BgTileKind.Road8
-        || kind == BgTileKind.Road9 || kind == BgTileKind.Road10 || kind == BgTileKind.Snow)
+        || kind == BgTileKind.Road9 || kind == BgTileKind.Road10 || kind == BgTileKind.Snow  || kind == BgTileKind.Tree  || kind == BgTileKind.Tree2  || kind == BgTileKind.Tree3  || kind == BgTileKind.Tree4)
         {
             IsWalkable = true;
         }

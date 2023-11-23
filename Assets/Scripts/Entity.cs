@@ -19,8 +19,8 @@ public abstract class Entity : MonoBehaviour
         if (gameObject != null)
         {
             Position position = new(
-                x: (ushort)(gameObject.transform.position.x - 1),
-                y: (ushort)(gameObject.transform.position.y - 1)
+                x: (ushort)(gameObject.transform.position.x),
+                y: (ushort)(gameObject.transform.position.y)
             );
             Graph grafo = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
             grafo.entities = grafo.entities.Where(ent => ent != position.ToId()).ToArray();

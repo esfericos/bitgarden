@@ -139,7 +139,7 @@ public class MapPainter : MonoBehaviour
     /// </summary>
     public void PaintEntity(Entity entity, Position pos)
     {
-        Vector3 posVec = new Vector3(pos.X + 1, pos.Y + 1);
+        Vector3 posVec = new Vector3(pos.X, pos.Y);
         entity.Render(posVec);
     }
 }

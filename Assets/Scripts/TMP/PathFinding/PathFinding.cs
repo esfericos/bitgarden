@@ -31,22 +31,22 @@ public class PathFinding : MonoBehaviour
         }
     }
 
-    public List<Vector3> FindPath(Position start)
-    {
-        // Position end = new(x: 16, y: 24);
-        Position end = new(x: 24, y: 26);
-        // achar posicao de entidade mais proxima
-        // return new List<Vector3>
-        // {
-        //     new Vector3(27, 23),
-        //     new Vector3(27, 24),
-        //     new Vector3(26, 25),
-        //     new Vector3(25, 25),
-        // };
-               
-        // return new List<Vector3> { new Vector3(start.X, start.Y), new Vector3(end.X, end.Y), };
-        return FindPath(start, end);
-    }
+    // public List<Vector3> FindPath(Position start)
+    // {
+    //     // Position end = new(x: 16, y: 24);
+    //     Position end = new(x: 24, y: 26);
+    //     // achar posicao de entidade mais proxima
+    //     // return new List<Vector3>
+    //     // {
+    //     //     new Vector3(27, 23),
+    //     //     new Vector3(27, 24),
+    //     //     new Vector3(26, 25),
+    //     //     new Vector3(25, 25),
+    //     // };
+    //            
+    //     // return new List<Vector3> { new Vector3(start.X, start.Y), new Vector3(end.X, end.Y), };
+    //     return FindPath(start, end);
+    // }
 
     public List<Vector3> FindPath(Position start, Position end)
     {
@@ -61,7 +61,13 @@ public class PathFinding : MonoBehaviour
             List<Vector3> vectorPath = new List<Vector3>();
             foreach (PathNode pathNode in path)
             {
+                
                 vectorPath.Add(new Vector3(pathNode.x, pathNode.y));
+                Position position = new Position(x: pathNode.x, y: pathNode.y);
+                if (graph.walls.Contains(position.ToId()))
+                {
+                    break;
+                }
             }
             return vectorPath;
         }

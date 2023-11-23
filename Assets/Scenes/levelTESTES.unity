@@ -1728,7 +1728,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1333784525}
   m_Direction: 2
   m_Value: 1.0000023
-  m_Size: 0.60191387
+  m_Size: 0.6019138
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4185,6 +4185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialized: 0
+  walls: 
   entities: 
 --- !u!114 &1345029458
 MonoBehaviour:
@@ -4410,9 +4411,9 @@ MonoBehaviour:
   gridGamb: {fileID: 32285478}
   turret: {fileID: 3421758336216858795, guid: fca82d03caeee8c4f8aef01fcde79e0e, type: 3}
   enemyCastle: {fileID: 5585164346093358949, guid: 9115145dad31df749a8ce4b02d35e49b, type: 3}
-  wall: {fileID: 8716738003659168067, guid: 312ff0eaa26dd5f45986d709b0006638, type: 3}
+  wall: {fileID: -5857003083474852966, guid: 7fa816e592356c145ac84198cad4607e, type: 3}
   tower: {fileID: 914189471983534127, guid: fca82d03caeee8c4f8aef01fcde79e0e, type: 3}
-  jsonFile: {fileID: 4900000, guid: 8a4da6db886b36948a559d30ca0edf15, type: 3}
+  jsonFile: {fileID: 4900000, guid: 3b96f1f0080c91b4489df07b16f39f12, type: 3}
 --- !u!4 &1557151289
 Transform:
   m_ObjectHideFlags: 0
