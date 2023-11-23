@@ -28,16 +28,18 @@ public class Console : MonoBehaviour
         Debug.Log("[CMD] Received: >: " + commandInput.text);
 
         string interpreterResponse = "Ok!";
-        Debug.Log("antes do try");
         try
         {
-            Debug.Log("dentro do try");
             GodGame.Evaluator.ExecProgram(commandInput.text);
+        }
+        catch (EvalException e)
+        {
+            interpreterResponse = e.Message;
         }
         catch (Exception e)
         {
-            Debug.Log("dentro do catch");
-            interpreterResponse = e.Message;
+            Debug.LogException(e);
+            interpreterResponse = "Ocorreu um erro inesperado";
         }
 
         // Call Code interpreter here inside a try/catch call... If catch print:

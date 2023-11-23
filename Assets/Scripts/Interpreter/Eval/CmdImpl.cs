@@ -73,7 +73,14 @@ namespace Interpreter.Eval
             foreach (var invalidArg in args.Keys.Except(_implArgNames))
                 throw new EvalException($"Argument '{invalidArg}' is not needed in call to '{Name}'");
             // This cast is infallible since the constructor ensures that `CmdExec`'s return type is a value type.
-            return (Value)_cmdExec.Invoke(_cmdInstance, argValues);
+            try
+            {
+                return (Value)_cmdExec.Invoke(_cmdInstance, argValues);
+            }
+            catch (TargetInvocationException e)
+            {
+                throw e.InnerException;
+            }
         }
     }
 }
