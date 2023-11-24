@@ -5,7 +5,7 @@ using UnityEngine;
 using Interfaces;
 
 public class Enemy : MonoBehaviour, IDamageable
-{  
+{
     public AudioSource HitSound;
     public int Hitpoints;
     public int MaxHitpoints = 5;
@@ -39,23 +39,23 @@ public class Enemy : MonoBehaviour, IDamageable
             }
         }
     }
-    
+
     private IEnumerator OnCollisionStay2D(Collision2D other)
     {
-        
+
         IDamageable structure = other.gameObject.GetComponent<IDamageable>();
 
         if (other.gameObject.CompareTag("Structure") && canDamage)
         {
             canDamage = false;
-            
+
             structure.TakeDamage(EnemyDamage);
-            
+
             yield return new WaitForSeconds(coolDown);
 
             canDamage = true;
-            
+
         }
-        
+
     }
 }

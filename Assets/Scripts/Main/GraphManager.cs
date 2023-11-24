@@ -13,14 +13,17 @@ public class GraphManager : MonoBehaviour
     private CameraMove camera;
     public Entity turret;
     public EnemyCastle enemyCastle;
+    public Core core;
     public Entity wall;
     public GameObject tower;
-    // public Entity core;
-    
+
+    public bool newWave = false;
+    // private int qtyEnemy = 0; // quantidade a mais de inimigos por rodada
+
 
     public TextAsset jsonFile;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         tilemap = GameObject.FindGameObjectWithTag("MapPainterHandler").GetComponent<MapPainter>();
         graph = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
@@ -29,19 +32,19 @@ public class GraphManager : MonoBehaviour
 
         string jsonString = jsonFile.ToString();
         RawWorld rawWorld = JsonConvert.DeserializeObject<RawWorld>(jsonString);
-        
-        graph.Initialize(rawWorld.Topology, rawWorld.Meta);
+
+        graph.Initialize(rawWorld.Topology, rawWorld.Meta, newWave);
 
         int[] posCore = new int[2]; // y = 0 e x = 1
         var aux = 0;
-        
+
         foreach (var rawCore in rawWorld.Core)
         {
             posCore[aux++] = rawCore.Value;
         }
-        
+
         int[] posSpawners = new int[2];
-        
+
         foreach (var rawSpawners in rawWorld.Spawners)
         {
             aux = 0;
@@ -49,11 +52,10 @@ public class GraphManager : MonoBehaviour
             {
                 posSpawners[aux++] = raw.Value;
             }
-            
+
             Position portalPosition = new Position(x: (ushort)posSpawners[0], y: (ushort)posSpawners[1]);
             AddEntity(enemyCastle, portalPosition);
             enemyCastle.SpawnEnemies(new Position(x: (ushort)(posSpawners[0] - 1), y: (ushort)(posSpawners[1] - 1)));
-            
         }
 
         // Define camera max range
@@ -93,11 +95,19 @@ public class GraphManager : MonoBehaviour
         AddEntity(wall, new Position(x: 24, y: 27));
         AddEntity(wall, new Position(x: 25, y: 27));
         // AddEntity(core, new Position(x: (ushort)posCore[1], y: (ushort)posCore[0]));
-        // AddEntity(core, new Position(x: (ushort)posCore[1], y: (ushort)posCore[0]));
+        AddEntity(core, new Position(x: (ushort)posCore[1], y: (ushort)posCore[0]));
 
         // AddEntity(wall, new Position(x: 10, y: 14));
         // AddEntity(enemyCastle, new Position(x: 25, y: 11));
         // enemyCastle.SpawnEnemies(new Position(x: 25, y: 11));
+    }
+
+    public void NewWave()
+    {
+        graph = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
+        newWave = true;
+        Start();
+        newWave = false;
     }
 
     /// <summary>
@@ -146,14 +156,14 @@ public class GraphManager : MonoBehaviour
 
         [JsonProperty("meta")]
         public Dictionary<string, RawMetadataEntry> Meta { get; set; }
-        
+
         [JsonProperty("core")]
         public Dictionary<char, int> Core { get; set; }
-        
+
         [JsonProperty("spawners")]
         public List<Dictionary<char, int>> Spawners { get; set; }
-        
-        
+
+
     }
 
     public class RawMetadataEntry

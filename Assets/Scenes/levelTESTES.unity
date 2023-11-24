@@ -1101,6 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1749298087}
+  GameOver: 0
 --- !u!114 &241972099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2159,6 +2160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1749298087}
+  GameOver: 0
 --- !u!114 &387955700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2596,8 +2598,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1990154286}
   m_HandleRect: {fileID: 1990154285}
   m_Direction: 2
-  m_Value: 0.9999969
-  m_Size: 0.60191375
+  m_Value: 0.999997
+  m_Size: 0.60191387
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4897,6 +4899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1749298087}
+  GameOver: 0
 --- !u!114 &891989833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6259,6 +6262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1749298087}
+  GameOver: 0
 --- !u!114 &1250705817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7202,6 +7206,7 @@ MonoBehaviour:
   _initialized: 0
   walls: 
   entities: 
+  AllEntities: []
 --- !u!114 &1345029458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8043,8 +8048,10 @@ MonoBehaviour:
   gridGamb: {fileID: 32285478}
   turret: {fileID: 3421758336216858795, guid: fca82d03caeee8c4f8aef01fcde79e0e, type: 3}
   enemyCastle: {fileID: 5585164346093358949, guid: 9115145dad31df749a8ce4b02d35e49b, type: 3}
+  core: {fileID: -4796595796847367740, guid: 765cf877d10b4c8449c18bbea1f42640, type: 3}
   wall: {fileID: -5857003083474852966, guid: 7fa816e592356c145ac84198cad4607e, type: 3}
   tower: {fileID: 914189471983534127, guid: fca82d03caeee8c4f8aef01fcde79e0e, type: 3}
+  newWave: 0
   jsonFile: {fileID: 4900000, guid: f07ee85ae79f52b4a9937246dccb8436, type: 3}
 --- !u!4 &1557151289
 Transform:
@@ -8805,6 +8812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  GameOver: 0
 --- !u!114 &1614823840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9723,6 +9731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1749298087}
+  GameOver: 0
 --- !u!114 &1830017713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10094,6 +10103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  GameOver: 0
 --- !u!114 &1874655816
 MonoBehaviour:
   m_ObjectHideFlags: 0

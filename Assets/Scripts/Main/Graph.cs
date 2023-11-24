@@ -11,22 +11,31 @@ public class Graph : MonoBehaviour
 {
     public bool _initialized = false;
 
-    private readonly Dictionary<Position, Directions> _topology = new();
-    public readonly Dictionary<Position, BgTile> _meta = new();
+    private Dictionary<Position, Directions> _topology = new();
+    public Dictionary<Position, BgTile> _meta = new();
     public Dictionary<Position, PathNode> walkables = new();
     public uint[] walls;
     public Position portalPosition;
 
     public uint[] entities;
 
+    public Entity[] AllEntities;
+
 
     public Graph() { }
 
-    public void Initialize(Dictionary<string, string> rawTopology, Dictionary<string, GraphManager.RawMetadataEntry> rawMeta)
+    public void Initialize(Dictionary<string, string> rawTopology, Dictionary<string, GraphManager.RawMetadataEntry> rawMeta, bool newWave)
     {
-        if (_initialized)
-            throw new Exception("Already initialized graph");
-        _initialized = true;
+        // tirei pq a gnt precisa reiniar para waves
+        // if (_initialized)
+        //     throw new Exception("Already initialized graph");
+        // _initialized = true;
+        if (newWave)
+        {
+            _topology = new();
+            _meta = new();
+            walkables = new();
+        }
 
         foreach (var rawEntry in rawTopology)
         {
@@ -41,7 +50,7 @@ public class Graph : MonoBehaviour
             var kind = BgTileKindUtils.FromString(rm.Type);
             _meta.Add(pos, new BgTile(kind, pos));
         }
-        
+
         IEnumerable<Position> topology = this.WalkableNodes();
         foreach (Position p in topology)
         {
@@ -52,6 +61,8 @@ public class Graph : MonoBehaviour
         }
 
         entities = new uint[0];
+        walls = new uint[0];
+        AllEntities = new Entity[0];
     }
 
     /// <summary>
@@ -60,11 +71,12 @@ public class Graph : MonoBehaviour
     public void AddEntity(Entity entity, Position pos)
     {
         _meta[pos].Entity = entity;
-        if (entity.GetType() == typeof(Turret)) entities = entities.Append(pos.ToId()).ToArray();
+        if (entity.GetType() == typeof(Turret) || entity.GetType() == typeof(Core)) entities = entities.Append(pos.ToId()).ToArray();
         else if (entity.GetType() == typeof(Wall))
         {
             walls = walls.Append(pos.ToId()).ToArray();
         }
+        // AllEntities = AllEntities.Append(entity).ToArray();
     }
 
     /// <summary>
@@ -415,7 +427,7 @@ public class BgTile
         if (kind == BgTileKind.Grass || kind == BgTileKind.Road1 || kind == BgTileKind.Road2
         || kind == BgTileKind.Road3 || kind == BgTileKind.Road4 || kind == BgTileKind.Road5
         || kind == BgTileKind.Road6 || kind == BgTileKind.Road7 || kind == BgTileKind.Road8
-        || kind == BgTileKind.Road9 || kind == BgTileKind.Road10 || kind == BgTileKind.Snow  || kind == BgTileKind.Tree  || kind == BgTileKind.Tree2  || kind == BgTileKind.Tree3  || kind == BgTileKind.Tree4)
+        || kind == BgTileKind.Road9 || kind == BgTileKind.Road10 || kind == BgTileKind.Snow || kind == BgTileKind.Tree || kind == BgTileKind.Tree2 || kind == BgTileKind.Tree3 || kind == BgTileKind.Tree4)
         {
             IsWalkable = true;
         }
