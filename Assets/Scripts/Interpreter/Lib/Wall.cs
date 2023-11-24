@@ -14,18 +14,17 @@ namespace Interpreter.Lib.Wall
         [SerializeField] private Price price = new Price(5);
         public Nil Exec(Number x, Number y)
         {
-
-
             Graph grafo = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
             if (!grafo.IsAvailableToBuild(new Position((ushort)x.Value, (ushort)y.Value)))
             {
-                throw new EvalException("Voc� n�o pode construir ai!");
+                throw new EvalException("Você não pode construir ai!");
             }
 
 
             if (!store.Buy(price))
             {
                 //TODO terminal warning
+                throw new EvalException("Você não tem dinheiro para construir!");
                 Console.print("ta pobre hein");
             }
             else
@@ -41,6 +40,7 @@ namespace Interpreter.Lib.Wall
                 if (plot.Length > 0)
                 {
                     Console.print("nao pode");
+                    throw new EvalException("Já existe uma estrutura ai!");
                     //@TODO: terminal warning
                 }
                 else
@@ -123,6 +123,7 @@ namespace Interpreter.Lib.Wall
             {
                 //@TODO: terminal error
                 Console.print("nao pode");
+                throw new EvalException("Já existe uma estrutura ai!");
             }
             else
             {
