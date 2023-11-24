@@ -38,8 +38,8 @@ namespace Interpreter.Lib.Wall
 
                 if (plot.Length > 0)
                 {
-                    Console.print("nao pode");
-                    throw new EvalException("Já existe uma estrutura ai!");
+                    // Console.print("nao pode");
+                    // throw new EvalException("Já existe uma estrutura ai!");
                     //@TODO: terminal warning
                 }
                 else
