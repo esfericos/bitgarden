@@ -9,12 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: 382c0e3c5dff5624ea13f74ff8d5dcc3
   - enabled: 1
-    path: Assets/Scenes/uiTestScene.unity
-    guid: fd795a6a42ea0674bbe1b37c0fe1a126
+    path: Assets/Scenes/Level1.unity
+    guid: d827a5ef41395ff4293cb7ad24106c8d
   - enabled: 1
     path: Assets/Scenes/levelTESTES.unity
     guid: 464d2aa41f4228f429f61d45516094d3
-  - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: d827a5ef41395ff4293cb7ad24106c8d
   m_configObjects: {}

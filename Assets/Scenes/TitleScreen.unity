@@ -1582,7 +1582,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2029993746}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_TargetAssemblyTypeName: GeneralManager, ScriptsAssembly
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
@@ -1590,7 +1590,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level1
+          m_StringArgument: levelTESTES,0
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2029993744

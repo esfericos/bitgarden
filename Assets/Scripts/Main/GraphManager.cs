@@ -56,9 +56,6 @@ public class GraphManager : MonoBehaviour
             
         }
 
-        
-
-
         // Define camera max range
         int top = 0;
         int bottom = 100;

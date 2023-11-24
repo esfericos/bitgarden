@@ -8303,6 +8303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialized: 0
+  walls: 
   entities: 
 --- !u!1 &1385396265
 GameObject:
@@ -9365,7 +9366,7 @@ MonoBehaviour:
   enemyCastle: {fileID: 5585164346093358949, guid: 9115145dad31df749a8ce4b02d35e49b, type: 3}
   wall: {fileID: 8716738003659168067, guid: 312ff0eaa26dd5f45986d709b0006638, type: 3}
   tower: {fileID: 914189471983534127, guid: fca82d03caeee8c4f8aef01fcde79e0e, type: 3}
-  jsonFile: {fileID: 4900000, guid: 8a4da6db886b36948a559d30ca0edf15, type: 3}
+  jsonFile: {fileID: 4900000, guid: f07ee85ae79f52b4a9937246dccb8436, type: 3}
 --- !u!4 &1557151289
 Transform:
   m_ObjectHideFlags: 0
@@ -11178,6 +11179,94 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000030517578, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2042925723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2042925725}
+  - component: {fileID: 2042925724}
+  m_Layer: 0
+  m_Name: MapPainterHandler
+  m_TagString: MapPainterHandler
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2042925724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042925723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9687a17e71c053047a49c6f6cc056401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 1165987918}
+  grass: {fileID: 11400000, guid: 93fe4e2573096484085c760a87a13457, type: 2}
+  grasseffecta: {fileID: 11400000, guid: 25fa90ca7094ffc428c0b022fd20908e, type: 2}
+  grasseffectb: {fileID: 11400000, guid: c17506ac6be01d549b2a6d31e40dc5db, type: 2}
+  gbt: {fileID: 11400000, guid: 674fa6ac034688b42a19cfe09a2b9f0c, type: 2}
+  gbb: {fileID: 11400000, guid: 2bc65531926ecc849af2f99c1571e45a, type: 2}
+  gbl: {fileID: 11400000, guid: 6dcd0805e5be8554085c2607f57a9558, type: 2}
+  gblb: {fileID: 11400000, guid: 1ee759169ed89694697f9363826623dd, type: 2}
+  gblt: {fileID: 11400000, guid: 61eef868fd8ffe54489a423fbf673f21, type: 2}
+  gbr: {fileID: 11400000, guid: 763de0989376a154ea9541d9335f42aa, type: 2}
+  gbrb: {fileID: 11400000, guid: 2e800d0a3f6f3f844a93634e3fb3c858, type: 2}
+  gbrt: {fileID: 11400000, guid: 04618586131cef84281469ab700108c5, type: 2}
+  gbilt: {fileID: 11400000, guid: e87fc09be59025342bac07463545a305, type: 2}
+  gbirt: {fileID: 11400000, guid: 81a7f4d3d3bc3ed40ac58ca5245e925c, type: 2}
+  gbilb: {fileID: 11400000, guid: 417296b48b2c7f547a92dbbe8c322a27, type: 2}
+  gbirb: {fileID: 11400000, guid: 8b00a498155cd8d41a8d7e9a5c94601e, type: 2}
+  road1: {fileID: 11400000, guid: b9b9fef29b542c84583078ff2e922264, type: 2}
+  road2: {fileID: 11400000, guid: 2fe2b510db0d2634eaec913980768213, type: 2}
+  road3: {fileID: 11400000, guid: a9df4af2b1d2cc344a47bca681b711e8, type: 2}
+  road4: {fileID: 11400000, guid: 33cd34ff4cdb0cf4c80a640af2075c2e, type: 2}
+  road5: {fileID: 11400000, guid: 0954fe6472e4fea44bbc2e04a2be9386, type: 2}
+  road6: {fileID: 11400000, guid: 5af3526d45636bd45b49b98e63a4b41c, type: 2}
+  road7: {fileID: 11400000, guid: 4bab8b0f66938d146ad380ead4cfe380, type: 2}
+  road8: {fileID: 11400000, guid: 55225fe9e1979e7419ba88aa890cf52d, type: 2}
+  road9: {fileID: 11400000, guid: 84fd338e9eea95440ba17a5bc483e2f5, type: 2}
+  road10: {fileID: 11400000, guid: a2aa7267a4bac1a46a07738ae2e42d20, type: 2}
+  snow: {fileID: 11400000, guid: ee571d7672944b4448501befd0ab1b7c, type: 2}
+  snoweffecta: {fileID: 11400000, guid: db3e0d0493e7360429bf7e8641abd387, type: 2}
+  sbt: {fileID: 11400000, guid: 7e431a5a94d017e4fb4d4013e42d2bbb, type: 2}
+  sbb: {fileID: 11400000, guid: 151eeb4f09f50bc45b6a54ad237b48c3, type: 2}
+  sbl: {fileID: 11400000, guid: bd7f2619bd9e4e749890f99e80f323a3, type: 2}
+  sblb: {fileID: 11400000, guid: 277898df73de0914697a9a97fa72eb12, type: 2}
+  sblt: {fileID: 11400000, guid: ffeb7c182c2d3cd4e86f1d99adb60972, type: 2}
+  sbr: {fileID: 11400000, guid: f5f65bdf827e57f4cb07307223cf6df9, type: 2}
+  sbrb: {fileID: 11400000, guid: f2e824c782ea525499bd1092cbebd091, type: 2}
+  sbrt: {fileID: 11400000, guid: 6445a579f1517224a9b9c0357b6d5848, type: 2}
+  sbilt: {fileID: 11400000, guid: 1324773f4fae58b4e88c7c73633f556a, type: 2}
+  sbirt: {fileID: 11400000, guid: 78145caf0817b334cbc1337b4e587269, type: 2}
+  sbilb: {fileID: 11400000, guid: a29c3510bd566f144a5a7cc353331840, type: 2}
+  sbirb: {fileID: 11400000, guid: 4ddf3d5537f431f439c0ebf739bbb7b6, type: 2}
+  tree: {fileID: 11400000, guid: 7737ae553f27ef044be7093208723062, type: 2}
+  tree2: {fileID: 11400000, guid: e188a8b75805b9944b98d7a48573e8fb, type: 2}
+  tree3: {fileID: 11400000, guid: 9a72cdee9ef7ec443ba13c67201aa14a, type: 2}
+  tree4: {fileID: 11400000, guid: 2f6e258783be8ae4aad09a23e3e0f15a, type: 2}
+--- !u!4 &2042925725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042925723}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.259236, y: 0.80283755, z: 0.012960698}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2103396398
 GameObject:
   m_ObjectHideFlags: 0
@@ -11489,94 +11578,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105996522}
   m_CullTransparentMesh: 1
---- !u!1 &2137589839
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2137589841}
-  - component: {fileID: 2137589840}
-  m_Layer: 0
-  m_Name: MapPainterHandler
-  m_TagString: MapPainterHandler
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2137589840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137589839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9687a17e71c053047a49c6f6cc056401, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemap: {fileID: 1165987918}
-  grass: {fileID: 11400000, guid: 93fe4e2573096484085c760a87a13457, type: 2}
-  grasseffecta: {fileID: 11400000, guid: 25fa90ca7094ffc428c0b022fd20908e, type: 2}
-  grasseffectb: {fileID: 11400000, guid: c17506ac6be01d549b2a6d31e40dc5db, type: 2}
-  gbt: {fileID: 11400000, guid: 674fa6ac034688b42a19cfe09a2b9f0c, type: 2}
-  gbb: {fileID: 11400000, guid: 2bc65531926ecc849af2f99c1571e45a, type: 2}
-  gbl: {fileID: 11400000, guid: 6dcd0805e5be8554085c2607f57a9558, type: 2}
-  gblb: {fileID: 11400000, guid: 1ee759169ed89694697f9363826623dd, type: 2}
-  gblt: {fileID: 11400000, guid: 61eef868fd8ffe54489a423fbf673f21, type: 2}
-  gbr: {fileID: 11400000, guid: 763de0989376a154ea9541d9335f42aa, type: 2}
-  gbrb: {fileID: 11400000, guid: 2e800d0a3f6f3f844a93634e3fb3c858, type: 2}
-  gbrt: {fileID: 11400000, guid: 04618586131cef84281469ab700108c5, type: 2}
-  gbilt: {fileID: 11400000, guid: e87fc09be59025342bac07463545a305, type: 2}
-  gbirt: {fileID: 11400000, guid: 81a7f4d3d3bc3ed40ac58ca5245e925c, type: 2}
-  gbilb: {fileID: 11400000, guid: 417296b48b2c7f547a92dbbe8c322a27, type: 2}
-  gbirb: {fileID: 11400000, guid: 8b00a498155cd8d41a8d7e9a5c94601e, type: 2}
-  road1: {fileID: 11400000, guid: b9b9fef29b542c84583078ff2e922264, type: 2}
-  road2: {fileID: 11400000, guid: 2fe2b510db0d2634eaec913980768213, type: 2}
-  road3: {fileID: 11400000, guid: a9df4af2b1d2cc344a47bca681b711e8, type: 2}
-  road4: {fileID: 11400000, guid: 33cd34ff4cdb0cf4c80a640af2075c2e, type: 2}
-  road5: {fileID: 11400000, guid: 0954fe6472e4fea44bbc2e04a2be9386, type: 2}
-  road6: {fileID: 11400000, guid: 5af3526d45636bd45b49b98e63a4b41c, type: 2}
-  road7: {fileID: 11400000, guid: 4bab8b0f66938d146ad380ead4cfe380, type: 2}
-  road8: {fileID: 11400000, guid: 55225fe9e1979e7419ba88aa890cf52d, type: 2}
-  road9: {fileID: 11400000, guid: 84fd338e9eea95440ba17a5bc483e2f5, type: 2}
-  road10: {fileID: 11400000, guid: a2aa7267a4bac1a46a07738ae2e42d20, type: 2}
-  snow: {fileID: 0}
-  snoweffecta: {fileID: 0}
-  sbt: {fileID: 0}
-  sbb: {fileID: 0}
-  sbl: {fileID: 0}
-  sblb: {fileID: 0}
-  sblt: {fileID: 0}
-  sbr: {fileID: 0}
-  sbrb: {fileID: 0}
-  sbrt: {fileID: 0}
-  sbilt: {fileID: 0}
-  sbirt: {fileID: 0}
-  sbilb: {fileID: 0}
-  sbirb: {fileID: 0}
-  tree: {fileID: 0}
-  tree2: {fileID: 0}
-  tree3: {fileID: 0}
-  tree4: {fileID: 0}
---- !u!4 &2137589841
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137589839}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.259236, y: 0.80283755, z: 0.012960698}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -11585,7 +11586,7 @@ SceneRoots:
   - {fileID: 32285479}
   - {fileID: 1999577521}
   - {fileID: 469268753}
-  - {fileID: 2137589841}
+  - {fileID: 2042925725}
   - {fileID: 1557151289}
   - {fileID: 1345029456}
   - {fileID: 1176539534}

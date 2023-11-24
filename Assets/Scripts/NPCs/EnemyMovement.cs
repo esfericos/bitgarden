@@ -126,8 +126,7 @@ public class EnemyMovement : MonoBehaviour
         Position end = new();
         foreach (var pos in graph.entities)
         {
-            int distance =
-                pathFinding.CalculateDistanceCost(graph.walkables[start], graph.walkables[Position.FromId(pos)]);
+            int distance = pathFinding.CalculateDistanceCost(graph.walkables[start], graph.walkables[Position.FromId(pos)]);
             if (closest > distance)
             {
                 closest = distance;
