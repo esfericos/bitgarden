@@ -28,6 +28,7 @@ public class Core : Entity, IDamageable
 
         if (Hitpoints <= 0)
         {
+            IsDead = true;
             Destroy(gameObject);
         }
     }

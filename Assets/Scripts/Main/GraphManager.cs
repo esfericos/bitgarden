@@ -80,22 +80,22 @@ public class GraphManager : MonoBehaviour
         // portalPosition = new Position(x: 28, y: 23);
 
         // AddEntity(turret, new Position(x: 13, y: 23));
-        AddEntity(turret, new Position(x: 24, y: 26));
+        // AddEntity(turret, new Position(x: 24, y: 26));
         // AddEntity(turret, new Position(x: 43, y: 20));
-        AddEntity(wall, new Position(x: 22, y: 25));
-        AddEntity(wall, new Position(x: 22, y: 26));
-        AddEntity(wall, new Position(x: 22, y: 24));
-        AddEntity(wall, new Position(x: 23, y: 24));
-        AddEntity(wall, new Position(x: 24, y: 24));
-        AddEntity(wall, new Position(x: 25, y: 24));
-        AddEntity(wall, new Position(x: 25, y: 25));
-        AddEntity(wall, new Position(x: 25, y: 26));
-        AddEntity(wall, new Position(x: 22, y: 27));
-        AddEntity(wall, new Position(x: 23, y: 27));
-        AddEntity(wall, new Position(x: 24, y: 27));
-        AddEntity(wall, new Position(x: 25, y: 27));
+        // AddEntity(wall, new Position(x: 22, y: 25));
+        // AddEntity(wall, new Position(x: 22, y: 26));
+        // AddEntity(wall, new Position(x: 22, y: 24));
+        // AddEntity(wall, new Position(x: 23, y: 24));
+        // AddEntity(wall, new Position(x: 24, y: 24));
+        // AddEntity(wall, new Position(x: 25, y: 24));
+        // AddEntity(wall, new Position(x: 25, y: 25));
+        // AddEntity(wall, new Position(x: 25, y: 26));
+        // AddEntity(wall, new Position(x: 22, y: 27));
+        // AddEntity(wall, new Position(x: 23, y: 27));
+        // AddEntity(wall, new Position(x: 24, y: 27));
+        // AddEntity(wall, new Position(x: 25, y: 27));
         // AddEntity(core, new Position(x: (ushort)posCore[1], y: (ushort)posCore[0]));
-        AddEntity(core, new Position(x: (ushort)posCore[1], y: (ushort)posCore[0]));
+        AddEntity(core, new Position(x: (ushort)(posCore[1]), y: (ushort)(posCore[0])));
 
         // AddEntity(wall, new Position(x: 10, y: 14));
         // AddEntity(enemyCastle, new Position(x: 25, y: 11));

@@ -23,7 +23,7 @@ public class GeneralManager : MonoBehaviour
             if (Core.IsDead)
             {
                 // game over
-                GameOver = true;
+                ChangeScene("GameOver,1");
             }
             else if (enemies.Length == 0)
             {
