@@ -93,7 +93,9 @@ public class GraphManager : MonoBehaviour
         // AddEntity(wall, new Position(x: 22, y: 27));
         // AddEntity(wall, new Position(x: 23, y: 27));
         // AddEntity(wall, new Position(x: 24, y: 27));
-        // AddEntity(wall, new Position(x: 25, y: 27));
+        // AddEntity(turret, new Position(x: 11, y: 27));
+        // AddEntity(turret, new Position(x: 15, y: 27));
+        // AddEntity(turret, new Position(x: 17, y: 27));
         // AddEntity(core, new Position(x: (ushort)posCore[1], y: (ushort)posCore[0]));
         AddEntity(core, new Position(x: (ushort)(posCore[1]), y: (ushort)(posCore[0])));
 

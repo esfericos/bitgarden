@@ -19,8 +19,7 @@ namespace Interpreter.Lib.Wall
             {
                 throw new EvalException("Você não pode construir ai!");
             }
-
-
+            
             if (!store.Buy(price))
             {
                 //TODO terminal warning

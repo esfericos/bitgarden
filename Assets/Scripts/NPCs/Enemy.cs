@@ -15,12 +15,14 @@ public class Enemy : MonoBehaviour, IDamageable
     private bool _canTakeDamage = true;
     private float coolDown = 1.25f;
     private Animator _animator;
+    private Inventory inventory;
 
     public void Start()
     {
         _animator = gameObject.GetComponent<Animator>();
         Hitpoints = MaxHitpoints;
         HealthBar.SetHealth(Hitpoints, MaxHitpoints);
+        inventory = GameObject.FindGameObjectWithTag("StoreHandler").GetComponent<Inventory>();
     }
 
     public void TakeDamage(int damage)
@@ -34,6 +36,7 @@ public class Enemy : MonoBehaviour, IDamageable
             if (Hitpoints <= 0)
             {
                 _canTakeDamage = false;
+                inventory.IncreasesGoldBy(1);
                 _animator.SetTrigger("Die");
                 Destroy(gameObject, 1f);
             }
