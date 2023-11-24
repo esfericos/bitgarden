@@ -1,14 +1,18 @@
 using UnityEngine;
+using UnityEngine.Assertions.Comparers;
 using UnityEngine.SceneManagement;
 
 public class GeneralManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
 
-    public void ChangeScene(string scene)
+    public void ChangeScene(string values)
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(scene);
+        
+        string[] args = values.Split(',');
+        
+        Time.timeScale = float.Parse(args[1]);
+        SceneManager.LoadScene(args[0]);
     }
     public void QuitGame()
     {
