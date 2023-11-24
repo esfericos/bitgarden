@@ -1,4 +1,5 @@
 ﻿using Interpreter.Eval.Type;
+using Interpreter.Eval;
 using UnityEngine;
 
 namespace Interpreter.Lib.Tower
@@ -11,6 +12,12 @@ namespace Interpreter.Lib.Tower
         public Nil Exec(Number x, Number y)
         {
             GraphHandler = GameObject.FindGameObjectWithTag("GraphData").GetComponent<GraphManager>();
+
+            Graph grafo = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
+            if (!grafo.IsAvailableToBuild(new Position((ushort)x.Value, (ushort)y.Value)))
+            {
+                throw new EvalException("Você não pode construir ai!");
+            }
 
             //@TODO: check for resources (waiting @ClaraOMello)
 

@@ -14,6 +14,15 @@ namespace Interpreter.Lib.Wall
         [SerializeField] private Price price = new Price(5);
         public Nil Exec(Number x, Number y)
         {
+
+
+            Graph grafo = GameObject.FindGameObjectWithTag("GraphHandle").GetComponent<Graph>();
+            if (!grafo.IsAvailableToBuild(new Position((ushort)x.Value, (ushort)y.Value)))
+            {
+                throw new EvalException("Você não pode construir ai!");
+            }
+
+
             if (!store.Buy(price))
             {
                 //TODO terminal warning
