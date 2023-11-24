@@ -25,7 +25,7 @@ public class Turret : Entity, IDamageable
     public override Price Price { get; set; }
     public override void Start()
     {
-        Price = new Price(gold: 0);
+        Price = new Price(gold: 10);
         Hitpoints = MaxHitpoints;
         HealthBar.SetHealth(Hitpoints, MaxHitpoints);
 

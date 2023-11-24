@@ -6,6 +6,8 @@ namespace Interpreter.Lib.Tower
 {
     public class CreateTower : MonoBehaviour
     {
+        private Store store = GameObject.FindGameObjectWithTag("StoreHandler").GetComponent<Store>();
+        [SerializeField] private Price price = new Price(10);
         public GameObject obj;
         private GraphManager GraphHandler;
 
@@ -24,8 +26,17 @@ namespace Interpreter.Lib.Tower
             ushort xf = (ushort)x.AsNumber();
             ushort yf = (ushort)y.AsNumber();
 
-            GraphHandler.AddTowerGambiarra2(xf, yf);
-
+            if (!store.Buy(price))
+            {
+                //TODO terminal warning
+                throw new EvalException("Você não tem dinheiro para construir!");
+                Console.print("ta pobre hein");
+            }
+            else
+            {
+                GraphHandler.AddTowerGambiarra2(xf, yf);
+            }
+            
             return new Nil();
         }
     }
